@@ -48,7 +48,7 @@ public abstract class HealthManager : MonoBehaviour
 
    public void SubtractHealth(float subAmt)
    {
-      Debug.Log("Sub Health");
+      
       if (_health > 0)
       {
          _health -= Mathf.Clamp(subAmt, 0, _health);

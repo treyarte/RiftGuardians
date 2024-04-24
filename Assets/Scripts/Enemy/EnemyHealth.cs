@@ -61,7 +61,7 @@ public class EnemyHealth : HealthManager
    
    public void DealDamage()
    {
-      float amountOfDamage = this.GetCurrentHealth();
+      float amountOfDamage = this.gameObject.GetComponent<EnemyHealth>().GetCurrentHealth();
       DoDamage?.Invoke(amountOfDamage);
    }
    

@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5831856651337287706}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7494361, z: -0}
+  m_LocalPosition: {x: 0, y: 1.02, z: -0}
   m_LocalScale: {x: 1.5, y: 1.5000004, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -296,15 +296,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7869358947873543231}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0006192087, y: 0.9993021, z: -0.019379852, w: -0.031928856}
-  m_LocalPosition: {x: -2.7263474, y: 0.13498294, z: 17.956345}
+  m_LocalRotation: {x: 0.0006191837, y: -0.9993021, z: 0.019379465, w: 0.031928204}
+  m_LocalPosition: {x: 3.6436524, y: 0.13498294, z: 24.616344}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1393354842675025272}
   - {fileID: 6275917146571025230}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 2.222, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 2.222, y: -176.34, z: 0}
 --- !u!65 &3976372519801138884
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -325,7 +325,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.6, y: 1.5, z: 5}
-  m_Center: {x: 0, y: 0.7494361, z: 0}
+  m_Center: {x: 0, y: 1.03, z: 0}
 --- !u!114 &7303266898028585699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,7 +339,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DmgAmount: 0
-  _enemyHealth: {fileID: 2968713645763307158}
 --- !u!114 &2968713645763307158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,7 +353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _health: 100
-  _hitMaterial: {fileID: 0}
+  _hitMaterial: {fileID: 2100000, guid: 4a1736b9478e6f544a9e8f8975b80713, type: 2}
 --- !u!114 &2777166521288388763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,7 +367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updateMethod: 0
-  _spline: {fileID: 2674751493620138134, guid: 991529b4c78344b45ad48fa8fe366f99, type: 3}
+  _spline: {fileID: 0}
   _autoUpdate: 1
   _rotationModifier:
     blend: 1
@@ -387,16 +386,16 @@ MonoBehaviour:
     useClippedPercent: 0
     keys: []
   _clipFromSample:
-    position: {x: -2.7263474, y: 0.13498294, z: 17.956345}
+    position: {x: -1.2963476, y: 0, z: 29.806345}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: -0.06378914, y: -0.03877219, z: -0.99720997}
+    forward: {x: -0.06383713, y: 0, z: -0.9979603}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0
   _clipToSample:
-    position: {x: 4.1330547, y: 0, z: -6.4358945}
+    position: {x: 1.4277058, y: 0.32607174, z: 9.453673}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: 0.09111864, y: 0, z: -0.99584}
+    forward: {x: 0.10840817, y: -0.019126037, z: -0.9939225}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 1
@@ -441,16 +440,16 @@ MonoBehaviour:
   targetRigidbody2D: {fileID: 0}
   targetTransform: {fileID: 5862607373747099176}
   _result:
-    position: {x: -2.7263474, y: 0.13498294, z: 17.956345}
+    position: {x: -1.2963476, y: 0, z: 29.806345}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: -0.06378914, y: -0.03877219, z: -0.99720997}
+    forward: {x: -0.06383713, y: 0, z: -0.9979603}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0
   _finalResult:
-    position: {x: -2.7263474, y: 0.13498294, z: 17.956345}
+    position: {x: -1.2963476, y: 0, z: 29.806345}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: -0.06378914, y: -0.03877219, z: -0.99720997}
+    forward: {x: -0.06383713, y: 0, z: -0.9979603}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0
