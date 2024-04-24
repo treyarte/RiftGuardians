@@ -165,8 +165,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: 2
-  fireRate: 0.036
-  FirePoint: {fileID: 0}
+  fireRate: 0.132
+  FirePoint: {fileID: 3088012945661816540}
   prefabs:
   - {fileID: 1564468091806366, guid: f1dc4df701f37324c98ea16f41770afc, type: 3}
   - {fileID: 1595252117517162, guid: e7776336bc56a9b4caa1c90ea92ff765, type: 3}
