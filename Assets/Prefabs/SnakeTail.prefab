@@ -160,7 +160,7 @@ MonoBehaviour:
   buildOnAwake: 1
   buildOnEnable: 0
   applyDirectionRotation: 1
-  useTriggers: 0
+  useTriggers: 1
   triggerGroup: 0
   _direction: 1
   _dontLerpDirection: 0
@@ -192,11 +192,11 @@ MonoBehaviour:
   targetRigidbody2D: {fileID: 0}
   targetTransform: {fileID: 6193145358374484630}
   _result:
-    position: {x: -5.0563474, y: 0.13498294, z: 29.806345}
-    up: {x: 0, y: 1, z: 0}
-    forward: {x: -0.06378914, y: -0.03877219, z: -0.99720997}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
+    position: {x: 0, y: 0, z: 0}
+    up: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: 0, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    size: 0
     percent: 0
   _finalResult:
     position: {x: -5.0563474, y: 0.13498294, z: 29.806345}
@@ -205,10 +205,10 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0
-  wrapMode: 0
+  wrapMode: 1
   followMode: 0
   autoStartPosition: 0
-  _follow: 0
+  _follow: 1
   _startPosition: 0
   preserveUniformSpeedWithOffset: 0
   _followSpeed: 9
