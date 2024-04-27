@@ -10,6 +10,7 @@ public class SnakeManager : MonoBehaviour
     [SerializeField] private List<GameObject> bodyParts = new List<GameObject>();
     [SerializeField] private SplineComputer _mainSpline;
     [SerializeField] private List<GameObject> snakeBody = new List<GameObject>();
+    
     private float countUp = 0;
     
     private void Start()
@@ -25,7 +26,7 @@ public class SnakeManager : MonoBehaviour
         }
         SnakeMovement();
     }
-
+    
     void CreateBodyParts()
     {
         if (snakeBody.Count == 0)

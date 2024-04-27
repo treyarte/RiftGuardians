@@ -9,6 +9,8 @@ public class SpawnSnakes : MonoBehaviour
     [SerializeField] private List<GameObject> bodyParts = new List<GameObject>();
     [SerializeField] private List<GameObject> snakeBody = new List<GameObject>();
     [SerializeField] private SplineComputer _mainSpline;
+    [SerializeField] private bool DoPushback = false;
+    
     private float countUp = 0;
     
     
@@ -23,6 +25,36 @@ public class SpawnSnakes : MonoBehaviour
         {
             CreateBodyParts();
         }
+            pushBack();
+    }
+    
+    private void pushBack()
+    {
+        if (snakeBody.Count < 2 || !DoPushback)
+        {
+            return;
+        }
+
+        var head = snakeBody[0];
+        var body = snakeBody[1];
+
+        var bodyFollow = body.GetComponent<SplineFollower>();
+        var follower = head.GetComponent<SplineFollower>();
+
+        var percent = bodyFollow.GetPercent();
+        follower.SetPercent(percent);
+        
+        Destroy(body);
+        snakeBody.RemoveAt(1);
+        DoPushback = false;
+    }
+
+    IEnumerator Wait(SplineFollower splineFollower)
+    {
+        
+       
+        yield return new WaitForSeconds(0.1f);
+        splineFollower.follow = true;
     }
     
     void CreateBodyParts()
