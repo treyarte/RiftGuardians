@@ -22,13 +22,13 @@ public class PlayerHealth : HealthManager
     //Adding events
     private void OnEnable()
     {
-        SpawnEnemy.DealDamageOnDeath += HandlePlayerTakeDamage;
+        CrossSplineDmg.DealDamageOnDeath += HandlePlayerTakeDamage;
     }
 
     //Removing events
     private void OnDisable()
     {
-        SpawnEnemy.DealDamageOnDeath -= HandlePlayerTakeDamage;
+        CrossSplineDmg.DealDamageOnDeath -= HandlePlayerTakeDamage;
     }
 
     private void Update()

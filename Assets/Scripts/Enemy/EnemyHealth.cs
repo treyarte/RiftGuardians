@@ -12,7 +12,7 @@ public class EnemyHealth : HealthManager
    private MeshRenderer _enemyVisuals;
    [SerializeField] private Material _hitMaterial;
    
-   public static event Action<float> DoDamage;
+   public static event Action<int> KillEnemy;
 
    private void Awake()
    {
@@ -25,7 +25,7 @@ public class EnemyHealth : HealthManager
    {
       if (this.GetCurrentHealth() <= 0)
       {
-         Destroy(this.gameObject);
+         HandleEnemyDeath();
       }
    }
 
@@ -59,10 +59,12 @@ public class EnemyHealth : HealthManager
       }
    }
    
-   public void DealDamage()
+   public void HandleEnemyDeath()
    {
-      float amountOfDamage = this.gameObject.GetComponent<EnemyHealth>().GetCurrentHealth();
-      DoDamage?.Invoke(amountOfDamage);
+      GameObject enemy;
+      int enemyId = (enemy = this.gameObject).GetInstanceID();
+      Destroy(enemy);
+      KillEnemy?.Invoke(enemyId);
    }
    
 }

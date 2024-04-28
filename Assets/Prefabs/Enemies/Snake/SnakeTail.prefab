@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2248718701942368574
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3427300007384380685, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d7c5042dc0b104bcc935eeeb02b7a8d2, type: 2}
+    - target: {fileID: 6914050798807584333, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.0563474
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914050798807584333, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.13498294
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914050798807584333, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 29.806345
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914050798807584333, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.031928856
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914050798807584333, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.0006192087
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914050798807584333, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9993021
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914050798807584333, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.019379852
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914050798807584333, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914050798807584333, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914050798807584333, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767816749160398858, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: m_Name
+      value: SnakeTail
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4adb20151526b044aba85951e95164b9, type: 3}

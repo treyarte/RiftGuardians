@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// Handles spawning enemies into and creates the Spline Trigger events for the enemies
 /// </summary>
-public class SpawnEnemy : MonoBehaviour
+public class CrossSplineDmg : MonoBehaviour
 {
     [SerializeField] private SplineComputer _mainSpline;
     
@@ -46,7 +46,7 @@ public class SpawnEnemy : MonoBehaviour
 
         float currentHealth = enemyHealth.GetCurrentHealth();
         DealDamageOnDeath?.Invoke(currentHealth);
-        Destroy(user.gameObject);
+        // Destroy(user.gameObject); 
     }
     
     

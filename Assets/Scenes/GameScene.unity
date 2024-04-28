@@ -677,15 +677,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceBetween: 0.2
-  bodyParts:
-  - {fileID: 4686199660676796972, guid: 28a2d9f40bb1a2d4aac6821109c85ea1, type: 3}
-  - {fileID: 5198653059749438096, guid: f631c080e186fdf4a9a93f83c3e79296, type: 3}
-  - {fileID: 6662762950567647832, guid: fb760a0a4296bcb4e9864395776a6771, type: 3}
-  - {fileID: 1708829149414428044, guid: 011973f2caa5d9d4284abac49fc37402, type: 3}
-  - {fileID: 3013446055028953997, guid: 4080b9cc7599a7a4e9540de2070f55a1, type: 3}
+  _snakeLength: 8
   snakeBody: []
   _mainSpline: {fileID: 1111083139}
   DoPushback: 0
+  _snakeHead: {fileID: 7767816749160398858, guid: 4adb20151526b044aba85951e95164b9,
+    type: 3}
+  _snakeBodyList:
+  - {fileID: 3686834460945254459, guid: 905ca484eead27a4eb731f0f96f2d5b6, type: 3}
+  - {fileID: 893678617946227985, guid: 83e4706f934449a4c8dc33c6da843df5, type: 3}
+  _snakeTail: {fileID: 8429007406121642292, guid: f289f11ac0d915f47b5bd86971eba5e4,
+    type: 3}
 --- !u!1001 &1628744976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -698,11 +700,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1215050187120066001, guid: 7d7e3608b777af54a8f22df2ceea4580,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5961247529249061280, guid: 7d7e3608b777af54a8f22df2ceea4580,
         type: 3}
@@ -4638,6 +4635,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8057280542335550976, guid: 8bdd84df7c964dc408228479f7959139,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

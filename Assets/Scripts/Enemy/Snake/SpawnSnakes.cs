@@ -1,31 +1,53 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Dreamteck.Splines;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SpawnSnakes : MonoBehaviour
 {
-    [SerializeField] private float distanceBetween = .2f;
-    [SerializeField] private List<GameObject> bodyParts = new List<GameObject>();
-    [SerializeField] private List<GameObject> snakeBody = new List<GameObject>();
+    [SerializeField] private float distanceBetween = .4f;
+    [SerializeField] private int _snakeLength;
+    [SerializeField] public List<GameObject> snakeBody = new List<GameObject>();
     [SerializeField] private SplineComputer _mainSpline;
     [SerializeField] private bool DoPushback = false;
+    private bool isSnakeBuilt = false;
+    /// <summary>
+    /// Dictionary of snake body parts to quickly
+    /// access them when known the gameObject instance id
+    /// </summary>
+    private Dictionary<int, GameObject> snakeBodyDict = new Dictionary<int, GameObject>();
+    
+    [Header("Snake Prefabs")]
+    [SerializeField] private GameObject _snakeHead;
+    [SerializeField] private List<GameObject> _snakeBodyList;
+    [SerializeField] private GameObject _snakeTail;
     
     private float countUp = 0;
-    
-    
+
+    private void OnEnable()
+    {
+        EnemyHealth.KillEnemy += OnSnakePartDeath;
+    }
+
+    private void OnDisable()
+    {
+        EnemyHealth.KillEnemy -= OnSnakePartDeath;
+    }
+
     private void Start()
     {
-        CreateBodyParts();
+        GenerateSnake();
     }
     
     private void Update()
     {
-        if (bodyParts.Count > 0)
+        if (snakeBody.Count < _snakeLength && !isSnakeBuilt)
         {
-            CreateBodyParts();
+            GenerateSnake();
         }
-            pushBack();
+        pushBack();
     }
     
     private void pushBack()
@@ -49,46 +71,82 @@ public class SpawnSnakes : MonoBehaviour
         DoPushback = false;
     }
 
-    IEnumerator Wait(SplineFollower splineFollower)
-    {
-        
-       
-        yield return new WaitForSeconds(0.1f);
-        splineFollower.follow = true;
-    }
-    
-    void CreateBodyParts()
+    private void GenerateSnake()
     {
         if (snakeBody.Count == 0)
         {
-            GameObject temp1 = Instantiate(bodyParts[0], transform.position, transform.rotation, transform);
-            SplineFollower temp1SplineFollower = temp1.GetComponent<SplineFollower>();
-            if (temp1SplineFollower)
-            {
-                temp1SplineFollower.spline = _mainSpline;
-                
-            }
-            snakeBody.Add(temp1);
-            bodyParts.RemoveAt(0);
+            CreateBodyPart(_snakeHead);
         }
         
         countUp += Time.deltaTime;
-
+        //If the snake body is one behind the set length we can make a tail
+        bool canMakeTail = _snakeLength - snakeBody.Count == 1;
+        if (countUp >= distanceBetween && canMakeTail)
+        {
+            CreateBodyPart(_snakeTail);
+            countUp = 0;
+            isSnakeBuilt = true;
+            return;
+        }
+        
         if (countUp >= distanceBetween)
         {
-            GameObject temp = Instantiate(bodyParts[0], transform.position, transform.rotation,
-                transform);
-            SplineFollower tempSplineFollower = temp.GetComponent<SplineFollower>();
-            if (tempSplineFollower)
-            {
-                tempSplineFollower.spline = _mainSpline;
-
-            }
-            snakeBody.Add(temp);
-            bodyParts.RemoveAt(0);
+            var rand = Random.Range(0, _snakeBodyList.Count);
+            GameObject bodyPart = _snakeBodyList[rand];
+            CreateBodyPart(bodyPart);
             countUp = 0;
         }
-
+    }
+    void CreateBodyPart(GameObject snakeParPrefab)
+    {
+       GameObject newSnakePart = Instantiate(snakeParPrefab, transform.position, transform.rotation, transform);
+       SplineFollower splineFollower = newSnakePart.GetComponent<SplineFollower>();
+       if (splineFollower)
+       {
+           splineFollower.spline = _mainSpline;
+       }
+       snakeBodyDict.Add(newSnakePart.GetInstanceID(), newSnakePart);
+       snakeBody.Add(newSnakePart);
     }
 
+    void OnSnakePartDeath(int enemyId)
+    {
+        //TODO use dictionary instead of array
+        var foundIndex = snakeBody.FindIndex(s => s.GetInstanceID() == enemyId);
+        if (foundIndex == -1)
+        {
+            Debug.Log("Enemy id is not in snake body");
+            return;
+        }
+        
+        //If it is the tail we do not need to move the position
+        if (foundIndex == snakeBody.Count - 1)
+        {
+            snakeBody.RemoveAt(foundIndex);
+            return;
+        }
+
+        var foundSnakeBody = snakeBody[foundIndex];
+
+        var snakePart = foundSnakeBody.GetComponent<SnakePart>();
+
+        if (snakePart.GetIsHead())
+        {
+            Destroy(this.gameObject);
+            //Add animation on all destroyed
+            return;
+        }
+
+        var movePercent = foundSnakeBody.GetComponent<SplineFollower>().GetPercent();
+        for (var i = foundIndex - 1; i >= 0; i--)
+        {
+            var aheadSnakePart = snakeBody[i];
+            var aheadSplineFollower = aheadSnakePart.GetComponent<SplineFollower>();
+            var aheadPercent = aheadSplineFollower.GetPercent();
+            aheadSplineFollower.SetPercent(movePercent);
+            movePercent = aheadPercent;
+        }
+        
+        snakeBody.RemoveAt(foundIndex);
+    }
 }
