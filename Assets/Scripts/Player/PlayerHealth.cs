@@ -13,6 +13,7 @@ public class PlayerHealth : HealthManager
     private Player _player;
     
     public static event Action<Player> OnPlayerDeath;
+    public static event Action<float> DamagePlayer;
     private void Awake()
     {
         _player = GetComponent<Player>();
@@ -37,7 +38,14 @@ public class PlayerHealth : HealthManager
         {
             //Kill player
         }
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            HandlePlayerTakeDamage(20);
+            DamagePlayer.Invoke(20);
+        }
     }
+    
 
     //TODO this needs to be moved into its own script
     /// <summary>
@@ -46,7 +54,6 @@ public class PlayerHealth : HealthManager
     /// <param name="damage"></param>
     public void HandlePlayerTakeDamage(float damage)
     {
-        Debug.Log("I ran");
         SubtractHealth(damage);
         _camAnim.Play(_camAnim.clip.name);
         var currPlayerStatus = _player.GetPlayerStatus();

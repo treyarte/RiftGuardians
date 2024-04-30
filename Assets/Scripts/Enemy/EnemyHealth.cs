@@ -19,6 +19,7 @@ public class EnemyHealth : HealthManager
       _childText = GetComponentInChildren<TextMeshPro>();
       _isChildTextNotNull = _childText != null;
       _enemyVisuals = GetComponentInChildren<MeshRenderer>();
+      _childText.text = $"{this.GetCurrentHealth()}";
    }
 
    private void Update()
