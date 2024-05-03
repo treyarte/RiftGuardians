@@ -5,10 +5,20 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-
-    private bool isGamePaused;
+    /// <summary>
+    /// Whether or not the game is paused
+    /// </summary>
+    /// <remarks>
+    /// We may need to move this to a manager if we plan to use this else where
+    /// </remarks>
+    private bool _isGamePaused;
+    
+    /// <summary>
+    /// The actual ui menu
+    /// </summary>
     [SerializeField] private GameObject pauseMenuUi;
-
+    
+    //Setting up button press events
     private void OnEnable()
     {
         GameInput.onPauseEvent += TogglePause;
@@ -19,21 +29,29 @@ public class PauseMenu : MonoBehaviour
         GameInput.onPauseEvent -= TogglePause;
     }
 
+    /// <summary>
+    /// Pause and unpauses the game
+    /// </summary>
     public void TogglePause()
     {
         if (Time.timeScale == 0f)
         {
             Time.timeScale = 1f;
-            isGamePaused = false;
+            _isGamePaused = false;
             pauseMenuUi.SetActive(false);
         }
         else
         {
             Time.timeScale = 0;
-            isGamePaused = true;
+            _isGamePaused = true;
             pauseMenuUi.SetActive(true);
         }
-        
-        
+    }
+    /// <summary>
+    /// Exits the game from the pause menu
+    /// </summary>
+    public void ExitGameFromPause()
+    {
+        Application.Quit();
     }
 }
