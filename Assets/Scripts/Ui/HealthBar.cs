@@ -22,7 +22,7 @@ namespace Ui
             //Adding events
             CrossSplineDmg.DealDamageOnDeath += SetHealth;
             PlayerHealth.DamagePlayer += SetHealth;
-            PlayerHealth.OnPlayerDeath += SetDeathIcon;
+            PlayerDeath.OnPlayerDeath += SetDeathIcon;
         }
 
         private void OnDisable()
@@ -30,7 +30,7 @@ namespace Ui
             //Disabling events
             CrossSplineDmg.DealDamageOnDeath -= SetHealth;
             PlayerHealth.DamagePlayer -= SetHealth;
-            PlayerHealth.OnPlayerDeath -= SetDeathIcon;
+            PlayerDeath.OnPlayerDeath -= SetDeathIcon;
         }
 
         // Start is called before the first frame update

@@ -17,12 +17,12 @@ public class FireProjectile : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerHealth.OnPlayerDeath += StopShooting;
+        PlayerDeath.OnPlayerDeath += StopShooting;
     }
 
     private void OnDisable()
     {
-        PlayerHealth.OnPlayerDeath -= StopShooting;
+        PlayerDeath.OnPlayerDeath -= StopShooting;
     }
 
     private void Awake()

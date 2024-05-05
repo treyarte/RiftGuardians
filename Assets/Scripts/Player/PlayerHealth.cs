@@ -12,7 +12,6 @@ public class PlayerHealth : HealthManager
     private Animation _camAnim;
     private Player _player;
     
-    public static event Action<Player> OnPlayerDeath;
     public static event Action<float> DamagePlayer;
     private void Awake()
     {
@@ -56,13 +55,5 @@ public class PlayerHealth : HealthManager
     {
         SubtractHealth(damage);
         _camAnim.Play(_camAnim.clip.name);
-        var currPlayerStatus = _player.GetPlayerStatus();
-
-        if (this.GetCurrentHealth() <= 0 && currPlayerStatus != PlayerStatus.Dead)
-        {
-            _player.SetPlayerStatus(PlayerStatus.Dead);
-            OnPlayerDeath?.Invoke(_player);
-        }
-
     }
 }
