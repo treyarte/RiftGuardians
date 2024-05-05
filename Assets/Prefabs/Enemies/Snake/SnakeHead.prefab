@@ -13,11 +13,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SnakeHead
       objectReference: {fileID: 0}
-    - target: {fileID: 4028383763228070336, guid: 83e4706f934449a4c8dc33c6da843df5,
-        type: 3}
-      propertyPath: _health
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 4060429693657779030, guid: 83e4706f934449a4c8dc33c6da843df5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,16 +62,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5204499704608714774, guid: 83e4706f934449a4c8dc33c6da843df5,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3dc5ec4a1695044409fe0f6bfd0e5fa3, type: 2}
-    - target: {fileID: 8122722886030272909, guid: 83e4706f934449a4c8dc33c6da843df5,
-        type: 3}
-      propertyPath: _isHead
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -73,6 +73,11 @@ PrefabInstance:
       propertyPath: _result.position.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3776762559111498184, guid: 15ee042b370f00e4c8f04997a0346d3d,
+        type: 3}
+      propertyPath: _health
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3860841124586103231, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
       propertyPath: m_Size.z
