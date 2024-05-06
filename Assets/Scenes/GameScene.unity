@@ -3788,7 +3788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceBetween: 0.7
-  _snakeLength: 3
+  _snakeLength: 15
   snakeBody: []
   _mainSpline: {fileID: 1111083139}
   DoPushback: 0
@@ -3952,7 +3952,7 @@ PrefabInstance:
     - target: {fileID: 3088012945661816540, guid: 7d7e3608b777af54a8f22df2ceea4580,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5961247529249061280, guid: 7d7e3608b777af54a8f22df2ceea4580,
         type: 3}
@@ -4037,6 +4037,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1813668923}
+    - targetCorrespondingSourceObject: {fileID: 1215050187120066001, guid: 7d7e3608b777af54a8f22df2ceea4580,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1813668924}
   m_SourcePrefab: {fileID: 100100000, guid: 7d7e3608b777af54a8f22df2ceea4580, type: 3}
 --- !u!1 &1657303739
 GameObject:
@@ -13110,6 +13114,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 1813668920}
+--- !u!114 &1813668924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813668917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 112789a57c5c598418f0404e7827bf74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1839321275
 GameObject:
   m_ObjectHideFlags: 0
