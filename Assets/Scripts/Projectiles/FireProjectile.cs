@@ -9,8 +9,6 @@ public class FireProjectile : MonoBehaviour
     [Header("Fire Rate")]
     [SerializeField]
     private int prefab;
-    [Range(0.0f, 1.0f)] 
-    public float fireRate = 0.1f;
     public GameObject FirePoint;
     public GameObject[] prefabs;
     private float spawnTimer = 0f;
@@ -19,12 +17,12 @@ public class FireProjectile : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerHealth.OnPlayerDeath += StopShooting;
+        PlayerDeath.OnPlayerDeath += StopShooting;
     }
 
     private void OnDisable()
     {
-        PlayerHealth.OnPlayerDeath -= StopShooting;
+        PlayerDeath.OnPlayerDeath -= StopShooting;
     }
 
     private void Awake()

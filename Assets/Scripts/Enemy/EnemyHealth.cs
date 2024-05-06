@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 
 public class EnemyHealth : HealthManager
@@ -12,20 +11,21 @@ public class EnemyHealth : HealthManager
    private MeshRenderer _enemyVisuals;
    [SerializeField] private Material _hitMaterial;
    
-   public static event Action<float> DoDamage;
+   public static event Action<int> KillEnemy;
 
    private void Awake()
    {
       _childText = GetComponentInChildren<TextMeshPro>();
       _isChildTextNotNull = _childText != null;
       _enemyVisuals = GetComponentInChildren<MeshRenderer>();
+      _childText.text = $"{this.GetCurrentHealth()}";
    }
 
    private void Update()
    {
       if (this.GetCurrentHealth() <= 0)
       {
-         Destroy(this.gameObject);
+         HandleEnemyDeath();
       }
    }
 
@@ -59,10 +59,12 @@ public class EnemyHealth : HealthManager
       }
    }
    
-   public void DealDamage()
+   public void HandleEnemyDeath()
    {
-      float amountOfDamage = this.gameObject.GetComponent<EnemyHealth>().GetCurrentHealth();
-      DoDamage?.Invoke(amountOfDamage);
+      GameObject enemy;
+      int enemyId = (enemy = this.gameObject).GetInstanceID();
+      Destroy(enemy);
+      KillEnemy?.Invoke(enemyId);
    }
    
 }

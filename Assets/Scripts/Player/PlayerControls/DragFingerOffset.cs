@@ -19,12 +19,12 @@ public class DragFingerOffset : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerHealth.OnPlayerDeath += StopMovement;
+        PlayerDeath.OnPlayerDeath += StopMovement;
     }
 
     private void OnDisable()
     {
-        PlayerHealth.OnPlayerDeath -= StopMovement;
+        PlayerDeath.OnPlayerDeath -= StopMovement;
     }
 
     private void Start()

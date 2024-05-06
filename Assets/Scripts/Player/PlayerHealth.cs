@@ -12,7 +12,7 @@ public class PlayerHealth : HealthManager
     private Animation _camAnim;
     private Player _player;
     
-    public static event Action<Player> OnPlayerDeath;
+    public static event Action<float> DamagePlayer;
     private void Awake()
     {
         _player = GetComponent<Player>();
@@ -22,13 +22,13 @@ public class PlayerHealth : HealthManager
     //Adding events
     private void OnEnable()
     {
-        SpawnEnemy.DealDamageOnDeath += HandlePlayerTakeDamage;
+        CrossSplineDmg.DealDamageOnDeath += HandlePlayerTakeDamage;
     }
 
     //Removing events
     private void OnDisable()
     {
-        SpawnEnemy.DealDamageOnDeath -= HandlePlayerTakeDamage;
+        CrossSplineDmg.DealDamageOnDeath -= HandlePlayerTakeDamage;
     }
 
     private void Update()
@@ -37,7 +37,14 @@ public class PlayerHealth : HealthManager
         {
             //Kill player
         }
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            HandlePlayerTakeDamage(20);
+            DamagePlayer.Invoke(20);
+        }
     }
+    
 
     //TODO this needs to be moved into its own script
     /// <summary>
@@ -46,16 +53,7 @@ public class PlayerHealth : HealthManager
     /// <param name="damage"></param>
     public void HandlePlayerTakeDamage(float damage)
     {
-        Debug.Log("I ran");
         SubtractHealth(damage);
         _camAnim.Play(_camAnim.clip.name);
-        var currPlayerStatus = _player.GetPlayerStatus();
-
-        if (this.GetCurrentHealth() <= 0 && currPlayerStatus != PlayerStatus.Dead)
-        {
-            _player.SetPlayerStatus(PlayerStatus.Dead);
-            OnPlayerDeath?.Invoke(_player);
-        }
-
     }
 }

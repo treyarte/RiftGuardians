@@ -146,7 +146,7 @@ Transform:
   m_GameObject: {fileID: 3088012945661816540}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.199, z: 0.528}
+  m_LocalPosition: {x: 0, y: 0.978, z: 0.528}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -165,8 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: 2
-  fireRate: 0.036
-  FirePoint: {fileID: 0}
+  FirePoint: {fileID: 3088012945661816540}
   prefabs:
   - {fileID: 1564468091806366, guid: f1dc4df701f37324c98ea16f41770afc, type: 3}
   - {fileID: 1595252117517162, guid: e7776336bc56a9b4caa1c90ea92ff765, type: 3}
@@ -183,7 +182,7 @@ MonoBehaviour:
   - {fileID: 1747738237969746, guid: eb5112a0c4d3eac489f517fa0886c058, type: 3}
   - {fileID: 1978937533168522, guid: 31528da7a30e88f4bbf380cf9c9042d7, type: 3}
   - {fileID: 1658112780640456, guid: a4ecf9bba65b0b84286159aa10fc4bc2, type: 3}
-  spawnInterval: 0.5
+  spawnInterval: 0.27
 --- !u!1001 &8969072911305980589
 PrefabInstance:
   m_ObjectHideFlags: 0
