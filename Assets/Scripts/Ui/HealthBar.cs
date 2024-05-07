@@ -20,7 +20,8 @@ namespace Ui
         private void OnEnable()
         {
             //Adding events
-            CrossSplineDmg.DealDamageOnDeath += SetHealth;
+            // CrossSplineDmg.DealDamageOnDeath += SetHealth;
+            PlayerHealth.HealthChanged += SetHealth;
             PlayerHealth.DamagePlayer += SetHealth;
             PlayerDeath.OnPlayerDeath += SetDeathIcon;
         }
@@ -28,7 +29,8 @@ namespace Ui
         private void OnDisable()
         {
             //Disabling events
-            CrossSplineDmg.DealDamageOnDeath -= SetHealth;
+            // CrossSplineDmg.DealDamageOnDeath -= SetHealth;
+            PlayerHealth.HealthChanged -= SetHealth;
             PlayerHealth.DamagePlayer -= SetHealth;
             PlayerDeath.OnPlayerDeath -= SetDeathIcon;
         }

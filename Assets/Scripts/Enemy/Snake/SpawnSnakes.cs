@@ -10,9 +10,9 @@ public class SpawnSnakes : MonoBehaviour
     [SerializeField] private float distanceBetween = .4f;
     [SerializeField] private int _snakeLength;
     [SerializeField] public List<GameObject> snakeBody = new List<GameObject>();
-    [SerializeField] private SplineComputer _mainSpline;
+    [SerializeField] public SplineComputer _mainSpline;
     [SerializeField] private bool DoPushback = false;
-    private bool isSnakeBuilt = false;
+    public bool isSnakeBuilt = false;
     /// <summary>
     /// Dictionary of snake body parts to quickly
     /// access them when known the gameObject instance id
@@ -23,8 +23,12 @@ public class SpawnSnakes : MonoBehaviour
     [SerializeField] private GameObject _snakeHead;
     [SerializeField] private List<GameObject> _snakeBodyList;
     [SerializeField] private GameObject _snakeTail;
+
+    public Action<bool> IsSpawnFinished;
     
     private float countUp = 0;
+    private int _minSnakeLen = 4;
+    private int _maxSnakeLen = 9;
 
     private void OnEnable()
     {
@@ -38,6 +42,7 @@ public class SpawnSnakes : MonoBehaviour
 
     private void Start()
     {
+        _snakeLength = Random.Range(_minSnakeLen, _maxSnakeLen);
         GenerateSnake();
     }
     
@@ -86,6 +91,7 @@ public class SpawnSnakes : MonoBehaviour
             CreateBodyPart(_snakeTail);
             countUp = 0;
             isSnakeBuilt = true;
+            IsSpawnFinished?.Invoke(true);
             return;
         }
         

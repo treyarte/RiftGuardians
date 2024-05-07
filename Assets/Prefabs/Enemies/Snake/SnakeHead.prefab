@@ -13,6 +13,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SnakeHead
       objectReference: {fileID: 0}
+    - target: {fileID: 1715885694325656437, guid: 83e4706f934449a4c8dc33c6da843df5,
+        type: 3}
+      propertyPath: _motion.applyPositionZ
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4028383763228070336, guid: 83e4706f934449a4c8dc33c6da843df5,
         type: 3}
       propertyPath: _health
