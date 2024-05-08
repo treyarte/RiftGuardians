@@ -33,11 +33,11 @@ public class CrossSplineDmg : MonoBehaviour
     /// Function that invokes an event to deal damage to the player
     /// when the a spline user crosses a trigger point and the destroy splineUser
     /// </summary>
-    /// <param name="user"></param>
+    /// <param name="enemy"></param>
     /// <returns></returns>
-    private void OnTriggerCrossed(SplineUser user )
+    private void OnTriggerCrossed(SplineUser enemy )
     {
-        var enemyHealth = user.gameObject.GetComponent<EnemyHealth>();
+        var enemyHealth = enemy.gameObject.GetComponent<EnemyHealth>();
         
         if (enemyHealth == null)
         {
@@ -46,7 +46,7 @@ public class CrossSplineDmg : MonoBehaviour
 
         float currentHealth = enemyHealth.GetCurrentHealth();
         DealDamageOnDeath?.Invoke(currentHealth);
-        // Destroy(user.gameObject); 
+        Destroy(enemy.gameObject); 
     }
     
     
