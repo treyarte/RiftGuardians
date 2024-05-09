@@ -18,6 +18,8 @@ public class PauseMenu : MonoBehaviour
     /// The actual ui menu
     /// </summary>
     [SerializeField] private GameObject pauseMenuUi;
+
+    [SerializeField] private GameObject retryMenuDialogue; 
     
     //Setting up button press events
     private void OnEnable()
@@ -53,6 +55,16 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     public void ExitGameFromPause()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Application.Quit();
+    }
+
+    /// <summary>
+    /// Toggles on or off the retry confirmation dialoge
+    /// </summary>
+    public void ToggleRetryConfirmation()
+    {
+        var isActive = retryMenuDialogue.activeSelf;
+
+        retryMenuDialogue.SetActive(!isActive);
     }
 }

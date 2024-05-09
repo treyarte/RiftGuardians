@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 199b43977340d7541b015c1544c19a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceBetween: 0.7
+  distanceBetween: 0.8
   _snakeLength: 5
   snakeBody: []
   _mainSpline: {fileID: 0}

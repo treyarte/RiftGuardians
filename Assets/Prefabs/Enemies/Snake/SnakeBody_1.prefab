@@ -63,26 +63,6 @@ PrefabInstance:
       propertyPath: _health
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 2926411142462375519, guid: 905ca484eead27a4eb731f0f96f2d5b6,
-        type: 3}
-      propertyPath: _motion.applyPositionZ
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2926411142462375519, guid: 905ca484eead27a4eb731f0f96f2d5b6,
-        type: 3}
-      propertyPath: _motion.applyRotationX
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2926411142462375519, guid: 905ca484eead27a4eb731f0f96f2d5b6,
-        type: 3}
-      propertyPath: _motion.applyRotationY
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2926411142462375519, guid: 905ca484eead27a4eb731f0f96f2d5b6,
-        type: 3}
-      propertyPath: _motion.applyRotationZ
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3686834460945254459, guid: 905ca484eead27a4eb731f0f96f2d5b6,
         type: 3}
       propertyPath: m_Name
