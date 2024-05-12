@@ -24,7 +24,9 @@ public class SpawnSnakes : MonoBehaviour
     [SerializeField] private List<GameObject> _snakeBodyList;
     [SerializeField] private GameObject _snakeTail;
 
+    [Header("Snake Events")]
     public Action<bool> IsSpawnFinished;
+    public static Action OnSnakeDestroyed;
     
     private float countUp = 0;
     private int _minSnakeLen = 4;
@@ -138,6 +140,7 @@ public class SpawnSnakes : MonoBehaviour
 
         if (snakePart.GetIsHead())
         {
+            OnSnakeDestroyed?.Invoke();
             Destroy(this.gameObject);
             //Add animation on all destroyed
             return;

@@ -10,18 +10,22 @@ public class EnemySpawner : MonoBehaviour
     
     [SerializeField] private EnemyWave[] _waves;
     [SerializeField] private SplineComputer _mainSpline;
-    
+    private EnemyWave _currentWave { get; set; }
 
-    private void Start()
+    private void Awake()
     {
         foreach (var currWave in _waves)
         {
         }
+
+        _currentWave = _waves.First();
         StartCoroutine(SpawnWave(_waves.First()));
     }
 
     private IEnumerator SpawnWave(EnemyWave currWave)
     {
+        // _currentWave = currWave;
+        _currentWave.hasStarted = true;
         foreach (var enemy in currWave.enemies)
         {
             //TODO change this to a check when adding other enemies
@@ -31,12 +35,20 @@ public class EnemySpawner : MonoBehaviour
                 snake._mainSpline = _mainSpline;
                 var newSnake = Instantiate(snake);
                 yield return new WaitUntil(() => newSnake.isSnakeBuilt);
-                Debug.Log("Snake Built");
                 yield return new WaitForSeconds(5f);
-                Debug.Log("10s after snake built");
             }
         }
         
         // yield return new WaitForSeconds(currWave.duration);
+    }
+
+    public int GetTotalEnemiesInWave()
+    {
+        return _currentWave.enemies.Length;
+    }
+
+    public int GetTotalWaves()
+    {
+        return _waves.Length;
     }
 }
