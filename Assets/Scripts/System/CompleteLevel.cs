@@ -21,12 +21,12 @@ public class CompleteLevel : MonoBehaviour
 
     private void OnEnable()
     {
-        SpawnSnakes.OnSnakeDestroyed += DecrementRemainEnemies;
+        EnemyHealth.KillEnemy += DecrementRemainEnemies;
     }
 
     private void OnDisable()
     {
-        SpawnSnakes.OnSnakeDestroyed -= DecrementRemainEnemies;
+        EnemyHealth.KillEnemy -= DecrementRemainEnemies;
     }
 
     // Start is called before the first frame update
@@ -39,10 +39,13 @@ public class CompleteLevel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            WaveCompleted.Invoke();
+        }
     }
 
-    private void DecrementRemainEnemies()
+    private void DecrementRemainEnemies(int _)
     {
         if (remainingEnemies <= 0)
         {

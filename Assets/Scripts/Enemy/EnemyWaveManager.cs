@@ -39,6 +39,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
         
+        Debug.Log("Wave ended");
         // yield return new WaitForSeconds(currWave.duration);
     }
 

@@ -40,11 +40,11 @@ public class PlayerHealth : HealthManager
             //Kill player
         }
         
-        if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount == 3)
-        {
-            HandlePlayerTakeDamage(20);
-            DamagePlayer.Invoke(20);
-        }
+        // if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount == 3)
+        // {
+        //     HandlePlayerTakeDamage(20);
+        //     DamagePlayer.Invoke(20);
+        // }
     }
     
 

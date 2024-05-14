@@ -34,6 +34,7 @@ public class MenuManager : MonoBehaviour
     private void EnableLevelResults()
     {
         levelResMenuUi.SetActive(true);
+        Time.timeScale = 0f;
         
         if (pauseMenuUi.activeSelf)
         {
