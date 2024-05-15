@@ -11,6 +11,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private EnemyWave[] _waves;
     [SerializeField] private SplineComputer _mainSpline;
     private EnemyWave _currentWave { get; set; }
+    public GameObject[] currentEnemies;
 
     private void Awake()
     {
@@ -34,12 +35,12 @@ public class EnemySpawner : MonoBehaviour
             {
                 snake._mainSpline = _mainSpline;
                 var newSnake = Instantiate(snake);
+                currentEnemies = currWave.enemies;
                 yield return new WaitUntil(() => newSnake.isSnakeBuilt);
                 yield return new WaitForSeconds(5f);
             }
         }
         
-        Debug.Log("Wave ended");
         // yield return new WaitForSeconds(currWave.duration);
     }
 
@@ -52,4 +53,6 @@ public class EnemySpawner : MonoBehaviour
     {
         return _waves.Length;
     }
+    
+    
 }

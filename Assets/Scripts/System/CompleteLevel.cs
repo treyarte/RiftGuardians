@@ -21,12 +21,12 @@ public class CompleteLevel : MonoBehaviour
 
     private void OnEnable()
     {
-        EnemyHealth.KillEnemy += DecrementRemainEnemies;
+        
     }
 
     private void OnDisable()
     {
-        EnemyHealth.KillEnemy -= DecrementRemainEnemies;
+        
     }
 
     // Start is called before the first frame update
