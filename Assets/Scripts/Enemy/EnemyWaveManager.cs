@@ -5,7 +5,7 @@ using System.Linq;
 using Dreamteck.Splines;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemyWaveManager : MonoBehaviour
 {
     
     [SerializeField] private EnemyWave[] _waves;
@@ -30,13 +30,12 @@ public class EnemySpawner : MonoBehaviour
         foreach (var enemy in currWave.enemies)
         {
             //TODO change this to a check when adding other enemies
-            var snake = enemy.GetComponent<SpawnSnakes>();
+            var snake = enemy.GetComponent<SnakeEnemy>();
             if (snake)
             {
-                snake._mainSpline = _mainSpline;
                 var newSnake = Instantiate(snake);
+                newSnake.CreateSnake(_mainSpline);
                 currentEnemies = currWave.enemies;
-                yield return new WaitUntil(() => newSnake.isSnakeBuilt);
                 yield return new WaitForSeconds(5f);
             }
         }

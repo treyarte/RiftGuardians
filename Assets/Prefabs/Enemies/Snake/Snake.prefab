@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7466275655065213353
+--- !u!1 &7979227323302946387
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9080576897880077384}
-  - component: {fileID: 7675786246811549764}
+  - component: {fileID: 724898221748145385}
+  - component: {fileID: 4346397518099745508}
   m_Layer: 0
   m_Name: Snake
   m_TagString: Untagged
@@ -17,43 +17,39 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9080576897880077384
+--- !u!4 &724898221748145385
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7466275655065213353}
+  m_GameObject: {fileID: 7979227323302946387}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 39.49}
+  m_LocalPosition: {x: 0, y: 19.39227, z: -10.00246}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7675786246811549764
+--- !u!114 &4346397518099745508
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7466275655065213353}
+  m_GameObject: {fileID: 7979227323302946387}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 199b43977340d7541b015c1544c19a69, type: 3}
+  m_Script: {fileID: 11500000, guid: 78eb705b45ae9a94494887e9aacfaaa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceBetween: 0.8
-  _snakeLength: 5
-  snakeBody: []
-  _mainSpline: {fileID: 0}
-  DoPushback: 0
-  isSnakeBuilt: 0
-  _snakeHead: {fileID: 7767816749160398858, guid: 4adb20151526b044aba85951e95164b9,
+  _snakeHead: {fileID: 1662842800057625750, guid: 4adb20151526b044aba85951e95164b9,
     type: 3}
-  _snakeBodyList:
-  - {fileID: 3686834460945254459, guid: 905ca484eead27a4eb731f0f96f2d5b6, type: 3}
-  - {fileID: 893678617946227985, guid: 83e4706f934449a4c8dc33c6da843df5, type: 3}
-  _snakeTail: {fileID: 8429007406121642292, guid: f289f11ac0d915f47b5bd86971eba5e4,
+  _snakeParts:
+  - {fileID: 8122722886030272909, guid: 83e4706f934449a4c8dc33c6da843df5, type: 3}
+  - {fileID: 5761523335045751975, guid: 905ca484eead27a4eb731f0f96f2d5b6, type: 3}
+  _snakeTail: {fileID: 587322869211284904, guid: f289f11ac0d915f47b5bd86971eba5e4,
     type: 3}
+  _maxLength: 20
+  distanceBetween: 0.4

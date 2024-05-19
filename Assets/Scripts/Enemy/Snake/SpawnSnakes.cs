@@ -88,7 +88,7 @@ public class SpawnSnakes : MonoBehaviour
         countUp += Time.deltaTime;
         //If the snake body is one behind the set length we can make a tail
         bool canMakeTail = _snakeLength - snakeBody.Count == 1;
-        if (countUp >= distanceBetween && canMakeTail)
+        if (canMakeTail)
         {
             CreateBodyPart(_snakeTail);
             countUp = 0;
@@ -97,22 +97,19 @@ public class SpawnSnakes : MonoBehaviour
             return;
         }
         
-        if (countUp >= distanceBetween)
-        {
-            var rand = Random.Range(0, _snakeBodyList.Count);
-            GameObject bodyPart = _snakeBodyList[rand];
-            CreateBodyPart(bodyPart);
-            countUp = 0;
-        }
+        var rand = Random.Range(0, _snakeBodyList.Count);
+        GameObject bodyPart = _snakeBodyList[rand];
+        CreateBodyPart(bodyPart);
+        countUp = 0;
     }
     void CreateBodyPart(GameObject snakeParPrefab)
     {
        GameObject newSnakePart = Instantiate(snakeParPrefab, transform.position, transform.rotation, transform);
-       SplineFollower splineFollower = newSnakePart.GetComponent<SplineFollower>();
-       if (splineFollower)
-       {
-           splineFollower.spline = _mainSpline;
-       }
+       // SplineFollower splineFollower = newSnakePart.GetComponent<SplineFollower>();
+       // if (splineFollower)
+       // {
+       //     splineFollower.spline = _mainSpline;
+       // }
        snakeBodyDict.Add(newSnakePart.GetInstanceID(), newSnakePart);
        snakeBody.Add(newSnakePart);
     }

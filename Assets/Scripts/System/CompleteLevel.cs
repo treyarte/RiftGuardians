@@ -32,8 +32,8 @@ public class CompleteLevel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        remainingEnemies = spawnManager.GetTotalEnemiesInWave();
-        maxWaves = spawnManager.GetTotalWaves();
+        
+        
     }
 
     // Update is called once per frame
