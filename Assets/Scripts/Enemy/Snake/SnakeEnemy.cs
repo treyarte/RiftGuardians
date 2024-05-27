@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Dreamteck.Splines;
+using Dreamteck.Splines.Examples;
 using UnityEngine;
 
 public class SnakeEnemy : MonoBehaviour
@@ -11,23 +12,10 @@ public class SnakeEnemy : MonoBehaviour
     [SerializeField] private int _maxLength;
     [SerializeField] private float distanceBetween = .4f;
     private SplineComputer _enemyPath;
-    private void CreateSnakeBody()
-    {
-        int snakeSize = Random.Range(1, _maxLength);
+    [SerializeField] private List<SnakePart> _partsToCreate;
+    private float _offset = 2.7f;
 
-        for (int i = 0; i < snakeSize; i++)
-        {
-            var rand = Random.Range(0, _snakeParts.Count);
-            
-            GameObject bodyPart = _snakeParts[rand].gameObject;
-
-            // var snakePart = Instantiate(bodyPart, transform);
-
-            StartCoroutine(WaitByDistance(bodyPart));
-        }
-    }
-
-    private void AddSplineToSnakeParts(GameObject snakePart)
+    private void AddSplineToSnakeParts(SnakePart snakePart)
     {
         SplineFollower splineFollower = snakePart.GetComponent<SplineFollower>();
         if (splineFollower)
@@ -35,25 +23,55 @@ public class SnakeEnemy : MonoBehaviour
             splineFollower.spline = _enemyPath;
         }
     } 
+    
+    private void AddSplineToSnakePartPosition(SnakePart snakePart)
+    {
+        SplinePositioner splinPos = snakePart.GetComponent<SplinePositioner>();
+        if (splinPos)
+        {
+            splinPos.spline = _enemyPath;
+        }
+    } 
         
     public void CreateSnake(SplineComputer enemyPath)
     {
         _enemyPath = enemyPath;
-        var snakeHeadObj = Instantiate(_snakeHead, transform);
-        StartCoroutine(WaitByDistance(snakeHeadObj.gameObject));
+
+        AddSplineToSnakeParts(_snakeHead);
+        SnakePart snakeHead = Instantiate(_snakeHead, transform);
+
+        SnakePart previousPart = snakeHead;
+        Wagon.SplineSegment initialSegment = new Wagon.SplineSegment(_enemyPath, -1, Spline.Direction.Forward);
+        previousPart.SetupRecursively(null, initialSegment);
         
-        CreateSnakeBody();
+        int snakeSize = Random.Range(1, _maxLength);
         
-        // var snakeTail = Instantiate(_snakeTail, transform);
-        StartCoroutine(WaitByDistance(_snakeTail.gameObject));
+        for (int i = 0; i < snakeSize; i++)
+        {
+            var rand = Random.Range(0, _snakeParts.Count);
+            
+            SnakePart bodyPart = _snakeParts[rand];
+            bodyPart.offset = _offset;
+            SnakePart newSnakePart = Instantiate(bodyPart, transform);
+
+            newSnakePart.front = previousPart;
+            previousPart.back = newSnakePart;
+            
+            newSnakePart.SetupRecursively(previousPart, initialSegment);
+            
+            newSnakePart.UpdateOffset();
+
+            previousPart = newSnakePart;
+        }
+
+        _snakeTail.offset = _offset;
+        SnakePart tail = Instantiate(_snakeTail, transform);
+        tail.front = previousPart;
+        previousPart.back = tail;
+        
+        tail.SetupRecursively(previousPart, initialSegment);
+        tail.UpdateOffset();
+        
     }
-    
-    IEnumerator WaitByDistance(GameObject snakePart)
-    {
-        AddSplineToSnakeParts(snakePart);
-        Instantiate(snakePart, transform);
-        yield return new WaitForSeconds(distanceBetween);
-    }
-    
     
 }
