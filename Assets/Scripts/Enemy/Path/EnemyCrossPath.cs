@@ -7,7 +7,7 @@ using UnityEngine;
 public class EnemyCrossPath : MonoBehaviour
 {
     [SerializeField] private SplineComputer _mainSpline;
-    private float _triggerPosition = 0.05401485f;
+    private float _triggerPosition = 0.058f;
     
     public static event Action<bool> StartPositionCheck;
 
@@ -46,8 +46,8 @@ public class EnemyCrossPath : MonoBehaviour
         if (snake == null || snake.GetIsTail())
         {
             StartPositionCheck?.Invoke(true);
+            Debug.Log("OnStartPosCross Activated");
         }
         
-        Debug.Log("OnStartPosCross Activated");
     }
 }

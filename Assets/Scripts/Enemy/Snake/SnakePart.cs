@@ -7,10 +7,12 @@ using UnityEngine;
 /// <summary>
 /// The base class singular snake body part 
 /// </summary>
-public class SnakePart : Wagon
+public class SnakePart : MonoBehaviour
 {
     [SerializeField] private bool _isHead;
     [SerializeField] private bool _isTail;
+    public int frontObjId;
+    public int backObjId;
     
     public void SetIsHead(bool isHead)
     {
@@ -31,9 +33,4 @@ public class SnakePart : Wagon
     {
         return _isTail;
     }
-    private void OnEnable()
-    {
-        // throw new NotImplementedException();
-    }
-    
 }

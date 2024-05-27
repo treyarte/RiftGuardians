@@ -32,15 +32,15 @@ public class SpawnSnakes : MonoBehaviour
     private int _minSnakeLen = 4;
     private int _maxSnakeLen = 9;
 
-    private void OnEnable()
-    {
-        EnemyHealth.KillEnemy += OnSnakePartDeath;
-    }
-
-    private void OnDisable()
-    {
-        EnemyHealth.KillEnemy -= OnSnakePartDeath;
-    }
+    // private void OnEnable()
+    // {
+    //     EnemyHealth.KillEnemy += OnSnakePartDeath;
+    // }
+    //
+    // private void OnDisable()
+    // {
+    //     EnemyHealth.KillEnemy -= OnSnakePartDeath;
+    // }
 
     private void Start()
     {
@@ -114,45 +114,45 @@ public class SpawnSnakes : MonoBehaviour
        snakeBody.Add(newSnakePart);
     }
 
-    void OnSnakePartDeath(int enemyId)
+    void OnSnakePartDeath(GameObject enemyId)
     {
         //TODO use dictionary instead of array
-        var foundIndex = snakeBody.FindIndex(s => s.GetInstanceID() == enemyId);
-        if (foundIndex == -1)
-        {
-            Debug.Log("Enemy id is not in snake body");
-            return;
-        }
-        
-        //If it is the tail we do not need to move the position
-        if (foundIndex == snakeBody.Count - 1)
-        {
-            snakeBody.RemoveAt(foundIndex);
-            return;
-        }
+        // var foundIndex = snakeBody.FindIndex(s => s.GetInstanceID() == enemyId);
+        // if (foundIndex == -1)
+        // {
+        //     Debug.Log("Enemy id is not in snake body");
+        //     return;
+        // }
+        //
+        // //If it is the tail we do not need to move the position
+        // if (foundIndex == snakeBody.Count - 1)
+        // {
+        //     snakeBody.RemoveAt(foundIndex);
+        //     return;
+        // }
+        //
+        // var foundSnakeBody = snakeBody[foundIndex];
 
-        var foundSnakeBody = snakeBody[foundIndex];
-
-        var snakePart = foundSnakeBody.GetComponent<SnakePart>();
-
-        if (snakePart.GetIsHead())
-        {
-            OnSnakeDestroyed?.Invoke();
-            Destroy(this.gameObject);
-            //Add animation on all destroyed
-            return;
-        }
-
-        var movePercent = foundSnakeBody.GetComponent<SplineFollower>().GetPercent();
-        for (var i = foundIndex - 1; i >= 0; i--)
-        {
-            var aheadSnakePart = snakeBody[i];
-            var aheadSplineFollower = aheadSnakePart.GetComponent<SplineFollower>();
-            var aheadPercent = aheadSplineFollower.GetPercent();
-            aheadSplineFollower.SetPercent(movePercent);
-            movePercent = aheadPercent;
-        }
-        
-        snakeBody.RemoveAt(foundIndex);
+        // var snakePart = foundSnakeBody.GetComponent<SnakePart>();
+        //
+        // if (snakePart.GetIsHead())
+        // {
+        //     OnSnakeDestroyed?.Invoke();
+        //     Destroy(this.gameObject);
+        //     //Add animation on all destroyed
+        //     return;
+        // }
+        //
+        // var movePercent = foundSnakeBody.GetComponent<SplineFollower>().GetPercent();
+        // for (var i = foundIndex - 1; i >= 0; i--)
+        // {
+        //     var aheadSnakePart = snakeBody[i];
+        //     var aheadSplineFollower = aheadSnakePart.GetComponent<SplineFollower>();
+        //     var aheadPercent = aheadSplineFollower.GetPercent();
+        //     aheadSplineFollower.SetPercent(movePercent);
+        //     movePercent = aheadPercent;
+        // }
+        //
+        // snakeBody.RemoveAt(foundIndex);
     }
 }
