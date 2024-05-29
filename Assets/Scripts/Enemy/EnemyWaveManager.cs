@@ -16,12 +16,12 @@ public class EnemyWaveManager : MonoBehaviour
 
     private void OnEnable()
     {
-        EnemyCrossPath.StartPositionCheck += UpdateCanSpawn;
+        PathTriggers.StartPositionCheck += UpdateCanSpawn;
     }
 
     private void OnDisable()
     {
-        EnemyCrossPath.StartPositionCheck -= UpdateCanSpawn;
+        PathTriggers.StartPositionCheck -= UpdateCanSpawn;
     }
 
     private void Awake()

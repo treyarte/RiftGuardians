@@ -24,13 +24,13 @@ public class PlayerHealth : HealthManager
     //Adding events
     private void OnEnable()
     {
-        CrossSplineDmg.DealDamageOnDeath += HandlePlayerTakeDamage;
+        PathTriggers.DealDmgOnCross += HandlePlayerTakeDamage;
     }
 
     //Removing events
     private void OnDisable()
     {
-        CrossSplineDmg.DealDamageOnDeath -= HandlePlayerTakeDamage;
+        PathTriggers.DealDmgOnCross -= HandlePlayerTakeDamage;
     }
 
     private void Update()
