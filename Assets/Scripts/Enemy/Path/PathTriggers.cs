@@ -63,6 +63,38 @@ public class PathTriggers : MonoBehaviour
 
         float currentHealth = enemyHealth.GetCurrentHealth();
         DealDmgOnCross?.Invoke(currentHealth);
+
+        var snakeEnemy = enemy.GetComponentInParent<SnakeEnemy>();
+
+        if (snakeEnemy == null)
+        {
+            throw new Exception("Failed to find snake part parent");
+        }
+
+        var headNode = snakeEnemy._snakePartsOrderedList.Head();
+
+        snakeEnemy._snakePartsOrderedList.RemoveFirst();
+        var newHeadNode = snakeEnemy._snakePartsOrderedList.Head();
+
+        var splineFollow = headNode.Data.GetComponent<SplineFollower>();
+           
+        if (newHeadNode.Data.GetComponent<SplineFollower>())
+        {
+            var spl = newHeadNode.Data.GetComponent<SplineFollower>();
+
+            spl.follow = true;
+            spl.followSpeed = splineFollow.followSpeed;
+            spl.spline = splineFollow.spline;
+            var p = newHeadNode.Data.GetComponent<SplinePositioner>();
+            spl.SetDistance(127.5738f);
+            
+            
+            
+            // Destroy(newHeadNode.Data.GetComponent<SplinePositioner>());
+        }
+        
+        
+        
         Destroy(enemy.gameObject); 
     }
     

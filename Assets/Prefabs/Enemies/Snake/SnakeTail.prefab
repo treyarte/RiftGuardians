@@ -33,6 +33,76 @@ PrefabInstance:
       propertyPath: _health
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 6327913228928075272, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: _follow
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327913228928075272, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: _followSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327913228928075272, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: _result.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327913228928075272, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: _result.up.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327913228928075272, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: _result.color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327913228928075272, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: _result.color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327913228928075272, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: _result.color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327913228928075272, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: _result.color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327913228928075272, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: _result.forward.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327913228928075272, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: _result.forward.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327913228928075272, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: _result.forward.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327913228928075272, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: _result.position.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327913228928075272, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: _result.position.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327913228928075272, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      propertyPath: _result.position.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6914050798807584333, guid: 4adb20151526b044aba85951e95164b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -98,6 +168,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 766988124155166202}
+    - targetCorrespondingSourceObject: {fileID: 7767816749160398858, guid: 4adb20151526b044aba85951e95164b9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1057071351656121892}
   m_SourcePrefab: {fileID: 100100000, guid: 4adb20151526b044aba85951e95164b9, type: 3}
 --- !u!4 &4667604085172856691 stripped
 Transform:
@@ -217,3 +291,120 @@ MonoBehaviour:
   _followTargetDirection: -1
   _position: 0
   _mode: 0
+--- !u!114 &1057071351656121892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8429007406121642292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ddc1a2536715a24095c464a2c394d5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateMethod: 0
+  _spline: {fileID: 0}
+  _autoUpdate: 1
+  _rotationModifier:
+    blend: 1
+    useClippedPercent: 0
+    keys: []
+  _offsetModifier:
+    blend: 1
+    useClippedPercent: 0
+    keys: []
+  _colorModifier:
+    blend: 1
+    useClippedPercent: 0
+    keys: []
+  _sizeModifier:
+    blend: 1
+    useClippedPercent: 0
+    keys: []
+  _clipFromSample:
+    position: {x: 0, y: 0, z: 0}
+    up: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: 0, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    size: 0
+    percent: 0
+  _clipToSample:
+    position: {x: 0, y: 0, z: 0}
+    up: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: 0, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    size: 0
+    percent: 0
+  _loopSamples: 0
+  _clipFrom: 0
+  _clipTo: 1
+  animClipFrom: 0
+  animClipTo: 1
+  multithreaded: 0
+  buildOnAwake: 1
+  buildOnEnable: 0
+  applyDirectionRotation: 1
+  useTriggers: 0
+  triggerGroup: 0
+  _direction: 1
+  _dontLerpDirection: 0
+  _physicsMode: 0
+  _motion:
+    _hasOffset: 0
+    _hasRotationOffset: 0
+    _offset: {x: 0, y: 0}
+    _rotationOffset: {x: 0, y: 0, z: 0}
+    _baseScale: {x: 1, y: 1, z: 1}
+    _2dMode: 0
+    velocityHandleMode: 0
+    applyPositionX: 1
+    applyPositionY: 1
+    applyPositionZ: 1
+    applyPosition2D: 1
+    retainLocalPosition: 0
+    direction: 1
+    applyRotationX: 1
+    applyRotationY: 1
+    applyRotationZ: 1
+    applyRotation2D: 1
+    retainLocalRotation: 0
+    applyScaleX: 0
+    applyScaleY: 0
+    applyScaleZ: 0
+    targetUser: {fileID: 0}
+  targetRigidbody: {fileID: 0}
+  targetRigidbody2D: {fileID: 0}
+  targetTransform: {fileID: 4667604085172856691}
+  _result:
+    position: {x: 0, y: 0, z: 0}
+    up: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: 0, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    size: 0
+    percent: 0
+  _finalResult:
+    position: {x: 0, y: 0, z: 0}
+    up: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: 0, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    size: 0
+    percent: 0
+  wrapMode: 0
+  followMode: 0
+  autoStartPosition: 0
+  _follow: 0
+  _startPosition: 0
+  preserveUniformSpeedWithOffset: 0
+  _followSpeed: 1
+  _followDuration: 1
+  _speedModifier:
+    blend: 1
+    useClippedPercent: 0
+    keys: []
+  _unityOnEndReached:
+    m_PersistentCalls:
+      m_Calls: []
+  _unityOnBeginningReached:
+    m_PersistentCalls:
+      m_Calls: []

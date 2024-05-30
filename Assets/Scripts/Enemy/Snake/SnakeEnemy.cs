@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Dreamteck.Splines;
 using Dreamteck.Splines.Examples;
 using UnityEngine;
+using Untils;
 using Random = UnityEngine.Random;
 
 public class SnakeEnemy : MonoBehaviour
@@ -17,6 +18,7 @@ public class SnakeEnemy : MonoBehaviour
     private SplineComputer _enemyPath;
     private SplineFollower _snakeHeadFollower;
     private float _offset = 2.7f;
+    public DoublyLinkedList<GameObject> _snakePartsOrderedList = new DoublyLinkedList<GameObject>();
 
     private void OnEnable()
     {
@@ -69,6 +71,8 @@ public class SnakeEnemy : MonoBehaviour
             splinePositioner.followTargetDistance = _offset;
             SnakePart newSnakePart = Instantiate(bodyPart, transform);
             
+            _snakePartsOrderedList.AddLast(newSnakePart.gameObject);
+            
             _snakePartsCreated.Add(newSnakePart.gameObject.GetInstanceID(), newSnakePart.gameObject);
             
             var prevSnakePart = prevPart.gameObject.GetComponent<SnakePart>();
@@ -90,7 +94,9 @@ public class SnakeEnemy : MonoBehaviour
         _enemyPath = enemyPath;
         AddSplineToFollower(_snakeHead);
         SnakePart snakeHead = Instantiate(_snakeHead, transform);
-
+        
+        _snakePartsOrderedList.AddLast(snakeHead.gameObject);
+        
         _snakeHeadFollower = snakeHead.GetComponent<SplineFollower>();
 
         _snakePartsCreated.Add(snakeHead.gameObject.GetInstanceID(), snakeHead.gameObject);
@@ -103,9 +109,13 @@ public class SnakeEnemy : MonoBehaviour
         tailPositioner.followTarget = previousPart;
         tailPositioner.followTargetDistance = _offset;
         tailPositioner.spline = _enemyPath;
+        
         var prevSnakePart = previousPart.GetComponent<SnakePart>();
         _snakeTail.backObjId = previousPart.gameObject.GetInstanceID();
+        
         var snakeTail = Instantiate(_snakeTail, transform);
+        _snakePartsOrderedList.AddLast(snakeTail.gameObject);
+        
         prevSnakePart.backObjId = snakeTail.gameObject.GetInstanceID();
         _snakePartsCreated.Add(snakeTail.gameObject.GetInstanceID(), snakeTail.gameObject);
     }
@@ -121,6 +131,23 @@ public class SnakeEnemy : MonoBehaviour
        }
 
        _snakePartsCreated.Remove(enemyId);
+
+       var headNode = _snakePartsOrderedList.Head();
+
+       if (headNode.Data.GetInstanceID() == enemyId)
+       {
+           _snakePartsOrderedList.RemoveFirst();
+           var newHeadNode = _snakePartsOrderedList.Head();
+
+           var splineFollow = headNode.Data.GetComponent<SplineFollower>();
+           
+           if (!newHeadNode.Data.GetComponent<SplineFollower>())
+           {
+               var r = newHeadNode.Data.AddComponent<SplineFollower>();
+               r = splineFollow;
+               Destroy(newHeadNode.Data.GetComponent<SplinePositioner>());
+           }
+       }
 
        SnakePart snakePart = foundPart.GetComponent<SnakePart>();
        
