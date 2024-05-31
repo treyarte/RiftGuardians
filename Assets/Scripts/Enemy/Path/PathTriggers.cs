@@ -48,7 +48,7 @@ public class PathTriggers : MonoBehaviour
     
     /// <summary>
     /// Function that invokes an event to deal damage to the player
-    /// when the a spline user crosses a trigger point and the destroy splineUser
+    /// when the spline user crosses a trigger point and the destroy splineUser
     /// </summary>
     /// <param name="enemy"></param>
     /// <returns></returns>
@@ -76,26 +76,35 @@ public class PathTriggers : MonoBehaviour
         snakeEnemy._snakePartsOrderedList.RemoveFirst();
         var newHeadNode = snakeEnemy._snakePartsOrderedList.Head();
 
-        var splineFollow = headNode.Data.GetComponent<SplineFollower>();
-           
-        if (newHeadNode.Data.GetComponent<SplineFollower>())
-        {
-            var spl = newHeadNode.Data.GetComponent<SplineFollower>();
+        // var splineFollow = headNode.Data.GetComponent<SplineFollower>();
 
-            spl.follow = true;
-            spl.followSpeed = splineFollow.followSpeed;
-            spl.spline = splineFollow.spline;
-            var p = newHeadNode.Data.GetComponent<SplinePositioner>();
-            spl.SetDistance(127.5738f);
-            
-            
-            
-            // Destroy(newHeadNode.Data.GetComponent<SplinePositioner>());
-        }
+        var follower = newHeadNode.Data.AddComponent<SplineFollower>();
+        var positioner = newHeadNode.Data.GetComponent<SplinePositioner>();
+         
+        follower.spline = _mainSpline;
+        follower.clipFrom = positioner.position;
+        follower.useTriggers = true;
+        follower.triggerGroup = 0;
+        
+        // if (newHeadNode.Data.GetComponent<SplineFollower>())
+        // {
+        //     Destroy(newHeadNode.Data.GetComponent<SplinePositioner>());
+        //     var spl = newHeadNode.Data.GetComponent<SplineFollower>();
+        //     spl.followSpeed = splineFollow.followSpeed;
+        //     spl.spline = _mainSpline;
+        //     // spl.SetPercent(0.7f);
+        //     spl.follow = true;
+        //     var travel = spl.Travel(0.0,127f,  Spline.Direction.Forward);
+        //     spl.SetPercent(travel);
+        //     spl.enabled = true;
+        //     
+        //     
+        //     
+        // }
         
         
         
-        Destroy(enemy.gameObject); 
+        // Destroy(enemy.gameObject); 
     }
     
     /// <summary>

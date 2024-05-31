@@ -98,6 +98,8 @@ public class SnakeEnemy : MonoBehaviour
         _snakePartsOrderedList.AddLast(snakeHead.gameObject);
         
         _snakeHeadFollower = snakeHead.GetComponent<SplineFollower>();
+        
+        _snakeHeadFollower.SetPercent(0.89f);
 
         _snakePartsCreated.Add(snakeHead.gameObject.GetInstanceID(), snakeHead.gameObject);
         

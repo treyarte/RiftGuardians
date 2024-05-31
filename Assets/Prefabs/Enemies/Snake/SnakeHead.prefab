@@ -160,11 +160,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3493505047139304211, guid: 83e4706f934449a4c8dc33c6da843df5,
         type: 3}
-      propertyPath: _motion.targetUser
-      value: 
-      objectReference: {fileID: 6327913228928075272}
-    - target: {fileID: 3493505047139304211, guid: 83e4706f934449a4c8dc33c6da843df5,
-        type: 3}
       propertyPath: _result.position.x
       value: -16.825365
       objectReference: {fileID: 0}
@@ -341,37 +336,37 @@ PrefabInstance:
     - target: {fileID: 4060429693657779030, guid: 83e4706f934449a4c8dc33c6da843df5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -16.825365
       objectReference: {fileID: 0}
     - target: {fileID: 4060429693657779030, guid: 83e4706f934449a4c8dc33c6da843df5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.0000019073486
       objectReference: {fileID: 0}
     - target: {fileID: 4060429693657779030, guid: 83e4706f934449a4c8dc33c6da843df5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 50.11441
       objectReference: {fileID: 0}
     - target: {fileID: 4060429693657779030, guid: 83e4706f934449a4c8dc33c6da843df5,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.018971654
       objectReference: {fileID: 0}
     - target: {fileID: 4060429693657779030, guid: 83e4706f934449a4c8dc33c6da843df5,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.0000000027521403
       objectReference: {fileID: 0}
     - target: {fileID: 4060429693657779030, guid: 83e4706f934449a4c8dc33c6da843df5,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.99982005
       objectReference: {fileID: 0}
     - target: {fileID: 4060429693657779030, guid: 83e4706f934449a4c8dc33c6da843df5,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.0000001450398
       objectReference: {fileID: 0}
     - target: {fileID: 4060429693657779030, guid: 83e4706f934449a4c8dc33c6da843df5,
         type: 3}
@@ -425,6 +420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 952423034535877578, guid: 83e4706f934449a4c8dc33c6da843df5, type: 3}
+    - {fileID: 3493505047139304211, guid: 83e4706f934449a4c8dc33c6da843df5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -433,18 +429,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 8735809541226297021}
   m_SourcePrefab: {fileID: 100100000, guid: 83e4706f934449a4c8dc33c6da843df5, type: 3}
---- !u!114 &6327913228928075272 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3493505047139304211, guid: 83e4706f934449a4c8dc33c6da843df5,
-    type: 3}
-  m_PrefabInstance: {fileID: 7469835548115666203}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7767816749160398858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ddc1a2536715a24095c464a2c394d5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &6914050798807584333 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4060429693657779030, guid: 83e4706f934449a4c8dc33c6da843df5,
@@ -543,18 +527,18 @@ MonoBehaviour:
   targetRigidbody2D: {fileID: 0}
   targetTransform: {fileID: 6914050798807584333}
   _result:
-    position: {x: 0, y: 0, z: 0}
-    up: {x: 0, y: 0, z: 0}
-    forward: {x: 0, y: 0, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 0}
-    size: 0
+    position: {x: -16.825365, y: -0.0000019073486, z: 50.11441}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.03793648, y: 0.00000029013182, z: -0.99928015}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1.5
     percent: 0
   _finalResult:
-    position: {x: 0, y: 0, z: 0}
-    up: {x: 0, y: 0, z: 0}
-    forward: {x: 0, y: 0, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 0}
-    size: 0
+    position: {x: -16.825365, y: -0.0000019073486, z: 50.11441}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.03793648, y: 0.00000029013182, z: -0.99928015}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1.5
     percent: 0
   wrapMode: 0
   followMode: 0
