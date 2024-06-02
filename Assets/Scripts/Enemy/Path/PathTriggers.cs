@@ -11,6 +11,7 @@ public class PathTriggers : MonoBehaviour
     [SerializeField] private SplineComputer _mainSpline;
     public static event Action<bool> StartPositionCheck;
     public static event Action<float> DealDmgOnCross;
+    public static event Action<GameObject> DestroyOnCross;
     private float _checkEnemyTriggerPos = 0.058f;
     private float _dealEnemyDmgTriggerPos = 1f;
     
@@ -54,57 +55,33 @@ public class PathTriggers : MonoBehaviour
     /// <returns></returns>
     public void DealEnemyDmg(SplineUser enemy )
     {
-        var enemyHealth = enemy.gameObject.GetComponent<EnemyHealth>();
-        
-        if (enemyHealth == null)
+
+        var enemyObj = enemy.gameObject;
+
+        var snakePart = enemyObj.GetComponent<SnakePart>();
+
+
+        if (snakePart && snakePart.GetIsHead())
         {
-            return;
+            enemyObj = snakePart.snakeNode.Next.Data;
+
+            var enemyHealth = enemyObj.gameObject.GetComponent<EnemyHealth>();
+
+            if (enemyHealth == null)
+            {
+                return;
+            }
+
+            float currentHealth = enemyHealth.GetCurrentHealth();
+            DealDmgOnCross?.Invoke(currentHealth);
+
+
+            DestroyOnCross?.Invoke(enemyObj);
+            Destroy(enemyObj);
+            
         }
-
-        float currentHealth = enemyHealth.GetCurrentHealth();
-        DealDmgOnCross?.Invoke(currentHealth);
-
-        var snakeEnemy = enemy.GetComponentInParent<SnakeEnemy>();
-
-        if (snakeEnemy == null)
-        {
-            throw new Exception("Failed to find snake part parent");
-        }
-
-        var headNode = snakeEnemy._snakePartsOrderedList.Head();
-
-        snakeEnemy._snakePartsOrderedList.RemoveFirst();
-        var newHeadNode = snakeEnemy._snakePartsOrderedList.Head();
-
-        // var splineFollow = headNode.Data.GetComponent<SplineFollower>();
-
-        var follower = newHeadNode.Data.AddComponent<SplineFollower>();
-        var positioner = newHeadNode.Data.GetComponent<SplinePositioner>();
-         
-        follower.spline = _mainSpline;
-        follower.clipFrom = positioner.position;
-        follower.useTriggers = true;
-        follower.triggerGroup = 0;
         
-        // if (newHeadNode.Data.GetComponent<SplineFollower>())
-        // {
-        //     Destroy(newHeadNode.Data.GetComponent<SplinePositioner>());
-        //     var spl = newHeadNode.Data.GetComponent<SplineFollower>();
-        //     spl.followSpeed = splineFollow.followSpeed;
-        //     spl.spline = _mainSpline;
-        //     // spl.SetPercent(0.7f);
-        //     spl.follow = true;
-        //     var travel = spl.Travel(0.0,127f,  Spline.Direction.Forward);
-        //     spl.SetPercent(travel);
-        //     spl.enabled = true;
-        //     
-        //     
-        //     
-        // }
-        
-        
-        
-        // Destroy(enemy.gameObject); 
+
     }
     
     /// <summary>

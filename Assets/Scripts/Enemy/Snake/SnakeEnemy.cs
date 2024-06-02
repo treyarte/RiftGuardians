@@ -24,11 +24,13 @@ public class SnakeEnemy : MonoBehaviour
     private void OnEnable()
     {
         EnemyHealth.KillEnemy += OnSnakePartDestroyed;
+        PathTriggers.DestroyOnCross += OnSnakePartDestroyed;
     }
 
     private void OnDisable()
     {
         EnemyHealth.KillEnemy -= OnSnakePartDestroyed;
+        PathTriggers.DestroyOnCross -= OnSnakePartDestroyed;
     }
 
     
@@ -139,6 +141,10 @@ public class SnakeEnemy : MonoBehaviour
         _snakePartsCreated.Add(snakeTail.gameObject.GetInstanceID(), snakeTail.gameObject);
     }
 
+    /// <summary>
+    /// Swaps the passed in snake node prev and next with each other
+    /// </summary>
+    /// <param name="snakeNode"></param>
     private void SwapSnakeNodes(Node<GameObject> snakeNode)
     {
         var prevNode = snakeNode.Previous;
@@ -167,10 +173,13 @@ public class SnakeEnemy : MonoBehaviour
             splinePosPrevNode.followTargetDistance = _offset;
             splinePosNextNode.followTarget = prevNode.Data.GetComponent<SplinePositioner>();
         }
-        
-        
     }
 
+    /// <summary>
+    /// Pushes the snake head back which in return
+    /// pushes the entire snake back
+    /// </summary>
+    /// <param name="snakeObj"></param>
     private void PushSnakeBack(GameObject snakeObj)
     {
         var percent = snakeObj.GetComponent<SplinePositioner>().GetPercent();
@@ -178,9 +187,19 @@ public class SnakeEnemy : MonoBehaviour
         snakeHead.Data.GetComponent<SplineFollower>().SetPercent(percent);
     }
 
+    /// <summary>
+    /// Handles when a snake part is destroyed
+    /// </summary>
+    /// <param name="snakeObj"></param>
     private void OnSnakePartDestroyed(GameObject snakeObj)
     {
         var snakePart = snakeObj.GetComponent<SnakePart>();
+
+        if (!snakePart)
+        {
+            return;
+        }
+        
         var snakeNode = snakePart.snakeNode;
         PushSnakeBack(snakeObj);
         if (snakePart.GetIsTail())
@@ -193,5 +212,23 @@ public class SnakeEnemy : MonoBehaviour
             return;
         }
         SwapSnakeNodes(snakeNode);
+    }
+
+    /// <summary>
+    /// Destroys the snake part when reaching the end
+    /// </summary>
+    /// <remarks>
+    /// Because of the way we have things setup. When it come to
+    /// snakes the head should be the only thing that should reach the end
+    /// </remarks>
+    private void OnSnakeReachEnd(GameObject snakeObj)
+    {
+        SnakePart snakePart = snakeObj.GetComponent<SnakePart>();
+        if (snakePart.GetIsHead())
+        {
+            var snakeBody = snakePart.snakeNode.Previous.Data;
+            OnSnakePartDestroyed(snakeBody);
+            
+        }
     }
 }
