@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Dreamteck.Splines;
 using Dreamteck.Splines.Examples;
 using UnityEngine;
+using Untils;
 
 /// <summary>
 /// The base class singular snake body part 
@@ -11,6 +13,7 @@ public class SnakePart : MonoBehaviour
 {
     [SerializeField] private bool _isHead;
     [SerializeField] private bool _isTail;
+    public Node<GameObject> snakeNode; 
     public int frontObjId;
     public int backObjId;
     

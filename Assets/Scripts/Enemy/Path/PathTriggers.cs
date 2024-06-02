@@ -21,7 +21,7 @@ public class PathTriggers : MonoBehaviour
             return;
         }
 
-        CreateStartPosCheckTrigger();
+        // CreateStartPosCheckTrigger();
 
     }
 

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78eb705b45ae9a94494887e9aacfaaa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _snakeHead: {fileID: 1662842800057625750, guid: 4adb20151526b044aba85951e95164b9,
+  _snakeHead: {fileID: 4889917041485847607, guid: 2da887974756fdd458357367011de85a,
     type: 3}
   _snakeParts:
   - {fileID: 8122722886030272909, guid: 83e4706f934449a4c8dc33c6da843df5, type: 3}
@@ -54,7 +54,6 @@ MonoBehaviour:
     type: 3}
   _maxLength: 20
   distanceBetween: 0.4
-  _partsToCreate: []
 --- !u!114 &6650631751202347861
 MonoBehaviour:
   m_ObjectHideFlags: 0

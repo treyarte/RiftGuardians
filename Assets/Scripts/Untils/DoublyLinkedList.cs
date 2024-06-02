@@ -17,7 +17,7 @@ namespace Untils
             size = 0;
         }
 
-        public void AddLast(T data)
+        public Node<T> AddLast(T data)
         {
             Node<T> newNode = new Node<T>(data);
 
@@ -34,6 +34,8 @@ namespace Untils
             }
 
             size++;
+
+            return newNode;
         }
 
         public void AddFirst(T data)
