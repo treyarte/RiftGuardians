@@ -78,6 +78,29 @@ namespace Untils
             size--;
         }
 
+        public void Remove(Node<T> node)
+        {
+            if (node == null)
+            {
+                return;
+            }
+
+            if (node.Previous != null)
+            {
+                node.Previous.Next = node.Next;
+            }
+            else 
+            {
+                //If we dont have a prev that means we are a head
+                head = node.Next;
+            }
+
+            if (node.Next != null)
+            {
+                node.Next.Previous = node.Previous;
+            }
+        }
+
         public void RemoveLast()
         {
             if (head == null)

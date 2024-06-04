@@ -14,7 +14,7 @@ public class SnakeEnemy : MonoBehaviour
     [SerializeField] private SnakePart _snakeTail;
     [SerializeField] private int _maxLength;
     [SerializeField] private float distanceBetween = .4f;
-    [SerializeField] private Dictionary<int, GameObject> _snakePartsCreated = new Dictionary<int, GameObject>();
+    private Dictionary<int, GameObject> _snakePartsCreated = new Dictionary<int, GameObject>();
     private SplineComputer _enemyPath;
     private SplineFollower _snakeHeadFollower;
     private float _offset = 2.7f;
@@ -142,16 +142,10 @@ public class SnakeEnemy : MonoBehaviour
     }
 
     /// <summary>
-    /// Swaps the passed in snake node prev and next with each other
+    /// Change the follow target of the snake body part
     /// </summary>
-    /// <param name="snakeNode"></param>
-    private void SwapSnakeNodes(Node<GameObject> snakeNode)
+    private void ChangeFollowTargets(Node<GameObject> prevNode, Node<GameObject> nextNode)
     {
-        var prevNode = snakeNode.Previous;
-        var nextNode = snakeNode.Next;
-        prevNode.Next = nextNode;
-        nextNode.Previous = prevNode;
-
         var splinePosNextNode = nextNode.Data.GetComponent<SplinePositioner>();
 
         bool isPrevNodeHead = prevNode.Data.GetComponent<SnakePart>().GetIsHead();
@@ -173,6 +167,21 @@ public class SnakeEnemy : MonoBehaviour
             splinePosPrevNode.followTargetDistance = _offset;
             splinePosNextNode.followTarget = prevNode.Data.GetComponent<SplinePositioner>();
         }
+    }
+
+    /// <summary>
+    /// Swaps the passed in snake node prev and next with each other
+    /// </summary>
+    /// <param name="snakeNode"></param>
+    private void SwapSnakeNodes(Node<GameObject> snakeNode)
+    {
+        var prevNode = snakeNode.Previous;
+
+        var nextNode = snakeNode.Next;
+        
+        _snakePartsOrderedList.Remove(snakeNode);
+
+        ChangeFollowTargets(prevNode, nextNode);
     }
 
     /// <summary>
@@ -202,6 +211,7 @@ public class SnakeEnemy : MonoBehaviour
         
         var snakeNode = snakePart.snakeNode;
         PushSnakeBack(snakeObj);
+        
         if (snakePart.GetIsTail())
         {
             //If the we only have the tail and head left destroy the entire snake
@@ -209,8 +219,16 @@ public class SnakeEnemy : MonoBehaviour
             {
                 Destroy(this.gameObject);
             }
+            _snakePartsOrderedList.Remove(snakeNode);
             return;
         }
+
+        if (snakeNode.Next == null && snakeNode.Previous.Data == _snakePartsOrderedList.Head().Data)
+        {
+                Destroy(this.gameObject);
+                return;
+        }
+        
         SwapSnakeNodes(snakeNode);
     }
 

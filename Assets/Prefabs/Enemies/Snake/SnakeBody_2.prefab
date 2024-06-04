@@ -241,7 +241,7 @@ PrefabInstance:
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.9967768
+      value: 1.8326598
       objectReference: {fileID: 0}
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
@@ -251,12 +251,12 @@ PrefabInstance:
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.170039
+      value: 6.297858
       objectReference: {fileID: 0}
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.34335846
+      value: 0.67465067
       objectReference: {fileID: 0}
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
@@ -266,7 +266,7 @@ PrefabInstance:
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.93920445
+      value: 0.73813725
       objectReference: {fileID: 0}
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
@@ -436,23 +436,23 @@ MonoBehaviour:
   targetRigidbody2D: {fileID: 0}
   targetTransform: {fileID: 510372219351205500}
   _result:
-    position: {x: -3.9967768, y: 0, z: 11.170039}
+    position: {x: 1.8326598, y: 0, z: 6.297858}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: -0.64496756, y: 0, z: -0.7642099}
+    forward: {x: 0.9959694, y: 0, z: -0.08969316}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1.5
-    percent: 0.8326243803192159
+    percent: 0.923897238002645
   _finalResult:
-    position: {x: -3.9967768, y: 0, z: 11.170039}
+    position: {x: 1.8326598, y: 0, z: 6.297858}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: -0.64496756, y: 0, z: -0.7642099}
+    forward: {x: 0.9959694, y: 0, z: -0.08969316}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1.5
-    percent: 0.8326243803192159
+    percent: 0.923897238002645
   _targetObject: {fileID: 0}
   _followTarget: {fileID: 0}
   _followTargetDistance: 2.7
   _followLoop: 0
   _followTargetDirection: -1
-  _position: 0.8326244
+  _position: 0.92389727
   _mode: 0
