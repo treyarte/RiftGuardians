@@ -74,7 +74,7 @@ public class SnakeEnemy : MonoBehaviour
 
             if (i == 0)
             {
-                splinePositioner.followTargetDistance = 1.9f;
+                splinePositioner.followTargetDistance = _distanceFromHead;
             }
             else
             {
@@ -116,7 +116,7 @@ public class SnakeEnemy : MonoBehaviour
         _snakeHeadFollower = snakeHead.GetComponent<SplineFollower>();
         
         //TODO set where we want the snake to spawn at
-        _snakeHeadFollower.SetPercent(0.89f);
+        // _snakeHeadFollower.SetPercent(0.89f);
 
         _snakePartsCreated.Add(snakeHead.gameObject.GetInstanceID(), snakeHead.gameObject);
         
@@ -191,9 +191,14 @@ public class SnakeEnemy : MonoBehaviour
     /// <param name="snakeObj"></param>
     private void PushSnakeBack(GameObject snakeObj)
     {
-        var percent = snakeObj.GetComponent<SplinePositioner>().GetPercent();
         var snakeHead = _snakePartsOrderedList.Head();
-        snakeHead.Data.GetComponent<SplineFollower>().SetPercent(percent);
+        var distance = snakeObj.GetComponentInChildren<Renderer>().bounds.size.z;
+        var snakeHeadFollower = snakeHead.Data.GetComponent<SplineFollower>();
+        var percentDifference =
+            snakeHeadFollower.GetPercent() - (distance / snakeHeadFollower.spline.CalculateLength());
+        
+        
+        snakeHead.Data.GetComponent<SplineFollower>().SetPercent(percentDifference);
     }
 
     /// <summary>

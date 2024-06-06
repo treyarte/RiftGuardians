@@ -241,7 +241,7 @@ PrefabInstance:
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8326598
+      value: 0.22879295
       objectReference: {fileID: 0}
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
@@ -251,12 +251,12 @@ PrefabInstance:
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.297858
+      value: 12.024136
       objectReference: {fileID: 0}
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.67465067
+      value: 0.7207823
       objectReference: {fileID: 0}
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
@@ -266,12 +266,12 @@ PrefabInstance:
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.73813725
+      value: -0.69316155
       objectReference: {fileID: 0}
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
@@ -436,23 +436,23 @@ MonoBehaviour:
   targetRigidbody2D: {fileID: 0}
   targetTransform: {fileID: 510372219351205500}
   _result:
-    position: {x: 1.8326598, y: 0, z: 6.297858}
+    position: {x: 0.22879295, y: 0, z: 12.024136}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: 0.9959694, y: 0, z: -0.08969316}
+    forward: {x: -0.99923706, y: 0, z: 0.039054118}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1.5
-    percent: 0.923897238002645
+    percent: 0.7960092658546536
   _finalResult:
-    position: {x: 1.8326598, y: 0, z: 6.297858}
+    position: {x: 0.22879295, y: 0, z: 12.024136}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: 0.9959694, y: 0, z: -0.08969316}
+    forward: {x: -0.99923706, y: 0, z: 0.039054118}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1.5
-    percent: 0.923897238002645
+    percent: 0.7960092658546536
   _targetObject: {fileID: 0}
   _followTarget: {fileID: 0}
   _followTargetDistance: 2.7
   _followLoop: 0
   _followTargetDirection: -1
-  _position: 0.92389727
+  _position: 0.79600924
   _mode: 0
