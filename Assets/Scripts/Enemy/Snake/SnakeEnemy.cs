@@ -64,8 +64,17 @@ public class SnakeEnemy : MonoBehaviour
             var rand = Random.Range(0, _snakeParts.Count);
             
             SnakePart bodyPart = _snakeParts[rand];
+            
+            SnakePart newSnakePart = Instantiate(bodyPart, transform);
+            
+            
+            var snakeNode = _snakePartsOrderedList.AddLast(newSnakePart.gameObject);
 
-            var splinePositioner = bodyPart.GetComponent<SplinePositioner>();
+            newSnakePart.snakeNode = snakeNode;
+            
+            _snakePartsCreated.Add(newSnakePart.gameObject.GetInstanceID(), newSnakePart.gameObject);
+            
+            var splinePositioner = newSnakePart.GetComponent<SplinePositioner>();
             if (!splinePositioner)
             {
                 throw new Exception($"Spline Positioner doesn't exist for snake part at index: {i}");
@@ -83,13 +92,6 @@ public class SnakeEnemy : MonoBehaviour
                 splinePositioner.followTargetDistance = _offset;
             }
             
-            SnakePart newSnakePart = Instantiate(bodyPart, transform);
-            
-            var snakeNode = _snakePartsOrderedList.AddLast(newSnakePart.gameObject);
-
-            newSnakePart.snakeNode = snakeNode;
-            
-            _snakePartsCreated.Add(newSnakePart.gameObject.GetInstanceID(), newSnakePart.gameObject);
             
             var prevSnakePart = prevPart.gameObject.GetComponent<SnakePart>();
             prevSnakePart.backObjId = newSnakePart.gameObject.GetInstanceID();
@@ -196,12 +198,26 @@ public class SnakeEnemy : MonoBehaviour
         snakeHead.Data.GetComponent<SplineFollower>().SetPercent(percentDifference);
     }
 
+    //TODO onDestroy need to happen on the individual snake part
+    private void OnDestroy()
+    {
+        
+    }
+
     /// <summary>
     /// Handles when a snake part is destroyed
     /// </summary>
     /// <param name="snakeObj"></param>
     private void OnSnakePartDestroyed(GameObject snakeObj)
     {
+        var isValid = _snakePartsCreated.TryGetValue(snakeObj.GetInstanceID(), out _);
+
+        if (!isValid)
+        {
+            return;
+        }
+        
+        //Because other snakes will have this method caled when destroyed we need to check
         var snakePart = snakeObj.GetComponent<SnakePart>();
 
         if (!snakePart)

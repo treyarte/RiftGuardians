@@ -63,7 +63,6 @@ public class EnemyHealth : HealthManager
    {
       GameObject enemy;
       int enemyId = (enemy = this.gameObject).GetInstanceID();
-      Debug.Log($"I Ran:{enemyId}");
       KillEnemy?.Invoke(enemy);
       DestroyImmediate (this.gameObject);
    }

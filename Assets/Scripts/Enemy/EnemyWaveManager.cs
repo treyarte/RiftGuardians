@@ -43,19 +43,19 @@ public class EnemyWaveManager : MonoBehaviour
         var index = 0;
         foreach (var enemy in currWave.enemies)
         {
-            if (index >= 1)
-            {
-                break;
-            }
+            // if (index >= 1)
+            // {
+            //     break;
+            // }
                 
             // yield return _currentWave;
             
             //TODO change this to a check when adding other enemies
-            var snake = enemy.GetComponent<SnakeEnemy>();
+            var newEnemy = Instantiate(enemy);
+            var snake = newEnemy.GetComponent<SnakeEnemy>();
             if (snake)
             {
-                var newSnake = Instantiate(snake);
-                newSnake.CreateSnake(_mainSpline);
+                snake.CreateSnake(_mainSpline);
                 currentEnemies = currWave.enemies;
             }
 

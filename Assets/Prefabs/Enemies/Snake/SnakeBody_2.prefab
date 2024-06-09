@@ -241,37 +241,37 @@ PrefabInstance:
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.8591795
+      value: 5.4356065
       objectReference: {fileID: 0}
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.02909851
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 42.929497
+      value: 14.280204
       objectReference: {fileID: 0}
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.70429635
+      value: 0.005936975
       objectReference: {fileID: 0}
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.00061722577
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7099056
+      value: 0.9999824
       objectReference: {fileID: 0}
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0006221416
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4312191639554921310, guid: 15ee042b370f00e4c8f04997a0346d3d,
         type: 3}
@@ -436,23 +436,23 @@ MonoBehaviour:
   targetRigidbody2D: {fileID: 0}
   targetTransform: {fileID: 510372219351205500}
   _result:
-    position: {x: -13.8591795, y: -0.02909851, z: 42.929497}
+    position: {x: 5.4356065, y: 0, z: 14.280204}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: 0.99996704, y: -0.0017527434, z: -0.007932659}
+    forward: {x: 0.011873741, y: 0, z: -0.99992955}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1.5
-    percent: 0
+    percent: 0.733746446891797
   _finalResult:
-    position: {x: -13.8591795, y: -0.02909851, z: 42.929497}
+    position: {x: 5.4356065, y: 0, z: 14.280204}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: 0.99996704, y: -0.0017527434, z: -0.007932659}
+    forward: {x: 0.011873741, y: 0, z: -0.99992955}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1.5
-    percent: 0
+    percent: 0.733746446891797
   _targetObject: {fileID: 0}
   _followTarget: {fileID: 0}
   _followTargetDistance: 2.7
   _followLoop: 0
   _followTargetDirection: -1
-  _position: 0
+  _position: 0.73374647
   _mode: 0
