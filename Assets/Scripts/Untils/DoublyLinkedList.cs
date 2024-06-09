@@ -99,6 +99,13 @@ namespace Untils
             {
                 node.Next.Previous = node.Previous;
             }
+            else //means we are removing a tail
+            {
+                tail = node.Previous;
+            }
+
+            node.Previous = null;
+            node.Next = null;
         }
 
         public void RemoveLast()

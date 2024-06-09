@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162661703540014184}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0000000027521403, y: 0.99982005, z: 0.0000001450398, w: 0.018971654}
-  m_LocalPosition: {x: -16.825365, y: -0.0000019073486, z: 50.11441}
+  m_LocalRotation: {x: 0.00061722577, y: 0.7099056, z: -0.0006221416, w: 0.70429635}
+  m_LocalPosition: {x: -13.8591795, y: -0.02909851, z: 42.929497}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -66,9 +66,9 @@ MonoBehaviour:
     useClippedPercent: 0
     keys: []
   _clipFromSample:
-    position: {x: -16.825365, y: -0.0000019073486, z: 50.11441}
+    position: {x: -13.8591795, y: -0.02909851, z: 42.929497}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: 0.03793648, y: 0.00000029013182, z: -0.99928015}
+    forward: {x: 0.99996704, y: -0.0017527434, z: -0.007932659}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1.5
     percent: 0
@@ -120,16 +120,16 @@ MonoBehaviour:
   targetRigidbody2D: {fileID: 0}
   targetTransform: {fileID: 2451417692461233490}
   _result:
-    position: {x: -16.825365, y: -0.0000019073486, z: 50.11441}
-    up: {x: 0, y: 1, z: 0}
-    forward: {x: 0.03793648, y: 0.00000029013182, z: -0.99928015}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1.5
+    position: {x: 0, y: 0, z: 0}
+    up: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: 0, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    size: 0
     percent: 0
   _finalResult:
-    position: {x: -16.825365, y: -0.0000019073486, z: 50.11441}
+    position: {x: -13.8591795, y: -0.02909851, z: 42.929497}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: 0.03793648, y: 0.00000029013182, z: -0.99928015}
+    forward: {x: 0.99996704, y: -0.0017527434, z: -0.007932659}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1.5
     percent: 0
@@ -139,7 +139,7 @@ MonoBehaviour:
   _follow: 1
   _startPosition: 0
   preserveUniformSpeedWithOffset: 0
-  _followSpeed: 1.5
+  _followSpeed: 2.08
   _followDuration: 1
   _speedModifier:
     blend: 1

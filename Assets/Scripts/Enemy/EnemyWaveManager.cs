@@ -40,8 +40,14 @@ public class EnemyWaveManager : MonoBehaviour
         // _currentWave = currWave;
         _currentWave.hasStarted = true;
         StartCoroutine(WaitToSpawnEnemy());
+        var index = 0;
         foreach (var enemy in currWave.enemies)
         {
+            if (index >= 1)
+            {
+                break;
+            }
+                
             // yield return _currentWave;
             
             //TODO change this to a check when adding other enemies
@@ -54,6 +60,7 @@ public class EnemyWaveManager : MonoBehaviour
             }
 
             _canSpawnEnemy = false;
+            index++;
             yield return new WaitUntil(() => _canSpawnEnemy);
             yield return new WaitForSeconds(5f);
         }

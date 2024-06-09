@@ -19,6 +19,7 @@ public class SnakeEnemy : MonoBehaviour
     private SplineFollower _snakeHeadFollower;
     private float _offset = 2.7f;
     private float _distanceFromHead = 1.9f;
+    private float _startPos = 0f;
     public DoublyLinkedList<GameObject> _snakePartsOrderedList = new DoublyLinkedList<GameObject>();
 
     private void OnEnable()
@@ -57,6 +58,7 @@ public class SnakeEnemy : MonoBehaviour
     private SplineTracer CreateSnakeBody(SplineTracer prevPart)
     {
         int snakeSize = Random.Range(1, _maxLength);
+        // int snakeSize = Random.Range(6, 8); 
         for (int i = 0; i < snakeSize; i++)
         {
             var rand = Random.Range(0, _snakeParts.Count);
@@ -116,7 +118,7 @@ public class SnakeEnemy : MonoBehaviour
         _snakeHeadFollower = snakeHead.GetComponent<SplineFollower>();
         
         //TODO set where we want the snake to spawn at
-        // _snakeHeadFollower.SetPercent(0.89f);
+        _snakeHeadFollower.SetPercent(_startPos);
 
         _snakePartsCreated.Add(snakeHead.gameObject.GetInstanceID(), snakeHead.gameObject);
         
@@ -148,23 +150,16 @@ public class SnakeEnemy : MonoBehaviour
     {
         var splinePosNextNode = nextNode.Data.GetComponent<SplinePositioner>();
 
-        bool isPrevNodeHead = prevNode.Data.GetComponent<SnakePart>().GetIsHead();
-
-        var splinePosPrevNode = nextNode.Data.GetComponent<SplinePositioner>();
-
-        if (!splinePosPrevNode)
-        {
-            return;
-        }
+        bool isPrevNodeHead = _snakePartsOrderedList.Head() == prevNode;
         
         if (isPrevNodeHead)
         {
-            splinePosPrevNode.followTargetDistance = _distanceFromHead;
+            splinePosNextNode.followTargetDistance = _distanceFromHead;
             splinePosNextNode.followTarget = prevNode.Data.GetComponent<SplineFollower>();
         }
         else
         {
-            splinePosPrevNode.followTargetDistance = _offset;
+            splinePosNextNode.followTargetDistance = _offset;
             splinePosNextNode.followTarget = prevNode.Data.GetComponent<SplinePositioner>();
         }
     }
@@ -216,23 +211,38 @@ public class SnakeEnemy : MonoBehaviour
         
         var snakeNode = snakePart.snakeNode;
         PushSnakeBack(snakeObj);
-        
-        if (snakePart.GetIsTail())
+
+        if (snakeObj == _snakePartsOrderedList.Tail().Data)
         {
-            //If the we only have the tail and head left destroy the entire snake
-            if (snakeNode.Previous.Data.GetInstanceID() == _snakePartsOrderedList.Head().Data.GetInstanceID())
+            var newTail = snakeNode.Previous;
+            if (newTail == _snakePartsOrderedList.Head())
             {
                 Destroy(this.gameObject);
+                return;
             }
-            _snakePartsOrderedList.Remove(snakeNode);
+            _snakePartsOrderedList.RemoveLast();
+            newTail.Data.GetComponent<SnakePart>().SetIsTail(true);
             return;
         }
-
-        if (snakeNode.Next == null && snakeNode.Previous.Data == _snakePartsOrderedList.Head().Data)
-        {
-                Destroy(this.gameObject);
-                return;
-        }
+        
+        // if (snakePart.GetIsTail())
+        // {
+        //     //If the we only have the tail and head left destroy the entire snake
+        //     if (snakeNode.Previous.Data.GetInstanceID() == _snakePartsOrderedList.Head().Data.GetInstanceID())
+        //     {
+        //         Destroy(this.gameObject);
+        //     }
+        //
+        //     snakeNode.Previous.Data.GetComponent<SnakePart>().SetIsTail(true);
+        //     _snakePartsOrderedList.RemoveLast();
+        //     return;
+        // }
+        //
+        // if (snakeNode.Next == null && snakeNode.Previous.Data == _snakePartsOrderedList.Head().Data)
+        // {
+        //         Destroy(this.gameObject);
+        //         return;
+        // }
         
         SwapSnakeNodes(snakeNode);
     }
