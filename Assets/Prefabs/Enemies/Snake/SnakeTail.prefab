@@ -26,7 +26,7 @@ PrefabInstance:
     - target: {fileID: 1662842800057625750, guid: 4adb20151526b044aba85951e95164b9,
         type: 3}
       propertyPath: backObjId
-      value: -60900
+      value: -64292
       objectReference: {fileID: 0}
     - target: {fileID: 3427300007384380685, guid: 4adb20151526b044aba85951e95164b9,
         type: 3}
@@ -111,37 +111,37 @@ PrefabInstance:
     - target: {fileID: 6914050798807584333, guid: 4adb20151526b044aba85951e95164b9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.3552184
+      value: -13.8591795
       objectReference: {fileID: 0}
     - target: {fileID: 6914050798807584333, guid: 4adb20151526b044aba85951e95164b9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.02909851
       objectReference: {fileID: 0}
     - target: {fileID: 6914050798807584333, guid: 4adb20151526b044aba85951e95164b9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.80927
+      value: 42.929497
       objectReference: {fileID: 0}
     - target: {fileID: 6914050798807584333, guid: 4adb20151526b044aba85951e95164b9,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7245318
+      value: 0.70429635
       objectReference: {fileID: 0}
     - target: {fileID: 6914050798807584333, guid: 4adb20151526b044aba85951e95164b9,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.00061722577
       objectReference: {fileID: 0}
     - target: {fileID: 6914050798807584333, guid: 4adb20151526b044aba85951e95164b9,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.68924135
+      value: 0.7099056
       objectReference: {fileID: 0}
     - target: {fileID: 6914050798807584333, guid: 4adb20151526b044aba85951e95164b9,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.0006221416
       objectReference: {fileID: 0}
     - target: {fileID: 6914050798807584333, guid: 4adb20151526b044aba85951e95164b9,
         type: 3}
@@ -218,9 +218,9 @@ MonoBehaviour:
     useClippedPercent: 0
     keys: []
   _clipFromSample:
-    position: {x: -16.825365, y: -0.0000019073486, z: 50.11441}
+    position: {x: -13.8591795, y: -0.02909851, z: 42.929497}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: 0.03793648, y: 0.00000029013182, z: -0.99928015}
+    forward: {x: 0.99996704, y: -0.0017527434, z: -0.007932659}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1.5
     percent: 0
@@ -272,23 +272,23 @@ MonoBehaviour:
   targetRigidbody2D: {fileID: 0}
   targetTransform: {fileID: 4667604085172856691}
   _result:
-    position: {x: 2.3552184, y: 0, z: 19.80927}
+    position: {x: -13.8591795, y: -0.02909851, z: 42.929497}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: -0.9987546, y: 0, z: 0.049892575}
+    forward: {x: 0.99996704, y: -0.0017527434, z: -0.007932659}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1.5
-    percent: 0.5471837874799447
+    percent: 0
   _finalResult:
-    position: {x: 2.3552184, y: 0, z: 19.80927}
+    position: {x: -13.8591795, y: -0.02909851, z: 42.929497}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: -0.9987546, y: 0, z: 0.049892575}
+    forward: {x: 0.99996704, y: -0.0017527434, z: -0.007932659}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1.5
-    percent: 0.5471837874799447
+    percent: 0
   _targetObject: {fileID: 0}
   _followTarget: {fileID: 0}
   _followTargetDistance: 2.7
   _followLoop: 0
   _followTargetDirection: -1
-  _position: 0.45478395
+  _position: 0
   _mode: 0
