@@ -10,59 +10,58 @@ public class EnemyWaveManager : MonoBehaviour
     
     [SerializeField] public EnemyWave[] _waves;
     [SerializeField] private SplineComputer _mainSpline;
-    [SerializeField] private bool _canSpawnEnemy = true; 
-    private EnemyWave _currentWave { get; set; }
-    [SerializeField]
-    private int _currentWaveNum = 0;
-    public GameObject[] currentEnemies;
+    [SerializeField] private bool _canSpawnEnemy = true;
+    [SerializeField] private bool _waveInProgress = false;
+    [SerializeField] private int _currWaveIndex = 0;
+    [SerializeField] private int _enemiesDefeated = 0;
 
     public static event Action<int> WavesCompleted; 
     
     private void OnEnable()
     {
         PathTriggers.StartPositionCheck += UpdateCanSpawn;
+        SnakeEnemy.DestroySnake += UpdateEnemyDefeated;
     }
 
     private void OnDisable()
     {
         PathTriggers.StartPositionCheck -= UpdateCanSpawn;
+        SnakeEnemy.DestroySnake -= UpdateEnemyDefeated;
     }
     
-    private void Awake()
+    private void Update()
     {
-        foreach (var currWave in _waves)
+        if (!_waveInProgress)
         {
-            StartCoroutine(SpawnWave(currWave));
-  
+            StartWave(_currWaveIndex);
+        }
+    }
+
+    private void StartWave(int waveIndex)
+    {
+        if (_waves.Length - 1 < waveIndex)
+        {
+            return;
         }
 
-        // _currentWave = _waves.First();
+        var wave = _waves[waveIndex];
+        _waveInProgress = true;
+        StartCoroutine(SpawnWave(wave));
     }
 
     private IEnumerator SpawnWave(EnemyWave currWave)
     {
-        
-        // _currentWave = currWave;
-        // _currentWave.hasStarted = true;
         currWave.hasStarted = true;
         StartCoroutine(WaitToSpawnEnemy());
         var index = 0;
         foreach (var enemy in currWave.enemies)
         {
-            // if (index >= 1)
-            // {
-            //     break;
-            // }
-                
-            // yield return _currentWave;
-            
             //TODO change this to a check when adding other enemies
             var newEnemy = Instantiate(enemy);
             var snake = newEnemy.GetComponent<SnakeEnemy>();
             if (snake)
             {
                 snake.CreateSnake(_mainSpline);
-                currentEnemies = currWave.enemies;
             }
 
             _canSpawnEnemy = false;
@@ -70,10 +69,6 @@ public class EnemyWaveManager : MonoBehaviour
             yield return new WaitUntil(() => _canSpawnEnemy);
             yield return new WaitForSeconds(5f);
         }
-        //Enemies need to be defeated
-        _currentWaveNum++;
-        WavesCompleted.Invoke(_currentWaveNum);     
-        // yield return new WaitForSeconds(currWave.duration);
     }
 
     private IEnumerator WaitToSpawnEnemy()
@@ -86,9 +81,33 @@ public class EnemyWaveManager : MonoBehaviour
         _canSpawnEnemy = canSpawn;
     }
 
+    private void UpdateEnemyDefeated()
+    {
+        _enemiesDefeated++;
+        var wave = _waves[_currWaveIndex];
+
+        if (_enemiesDefeated <= wave.enemies.Length - 1)
+        {
+            return;
+        }
+        
+        _waveInProgress = false;
+        
+        if (_currWaveIndex >= _waves.Length - 1)
+        {
+            WavesCompleted?.Invoke(_currWaveIndex);
+            return;
+        }
+        
+        _currWaveIndex++;
+        _enemiesDefeated = 0;
+    }
+
     public int GetTotalEnemiesInWave()
     {
-        return _currentWave.enemies.Length;
+        var wave = _waves[_currWaveIndex];
+
+        return wave.enemies.Length;
     }
 
     public int GetTotalWaves()

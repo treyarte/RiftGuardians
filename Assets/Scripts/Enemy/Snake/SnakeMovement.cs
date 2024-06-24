@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Dreamteck.Splines;
 using UnityEngine;
 
+[Obsolete]
 public class SnakeMovement : MonoBehaviour
 {
     [SerializeField] private float distanceBetween = .2f;

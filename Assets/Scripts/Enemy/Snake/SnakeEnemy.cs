@@ -22,6 +22,8 @@ public class SnakeEnemy : MonoBehaviour
     private float _startPos = 0f;
     public DoublyLinkedList<GameObject> _snakePartsOrderedList = new DoublyLinkedList<GameObject>();
 
+    public static event Action DestroySnake;
+    
     private void OnEnable()
     {
         EnemyHealth.KillEnemy += OnSnakePartDestroyed;
@@ -234,6 +236,7 @@ public class SnakeEnemy : MonoBehaviour
             if (newTail == _snakePartsOrderedList.Head())
             {
                 Destroy(this.gameObject);
+                DestroySnake?.Invoke();
                 return;
             }
             _snakePartsOrderedList.RemoveLast();
