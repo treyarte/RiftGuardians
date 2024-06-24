@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class PauseMenu : MonoBehaviour
     /// The actual ui menu
     /// </summary>
     [SerializeField] private GameObject pauseMenuUi;
+
+    [SerializeField] private GameObject retryMenuDialogue; 
     
     //Setting up button press events
     private void OnEnable()
@@ -53,5 +56,15 @@ public class PauseMenu : MonoBehaviour
     public void ExitGameFromPause()
     {
         Application.Quit();
+    }
+
+    /// <summary>
+    /// Toggles on or off the retry confirmation dialoge
+    /// </summary>
+    public void ToggleRetryConfirmation()
+    {
+        var isActive = retryMenuDialogue.activeSelf;
+
+        retryMenuDialogue.SetActive(!isActive);
     }
 }

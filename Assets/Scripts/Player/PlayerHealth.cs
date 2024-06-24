@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Script.Enums;
 using UnityEngine;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 /// <summary>
 /// Health component for managing player health
@@ -13,6 +14,7 @@ public class PlayerHealth : HealthManager
     private Player _player;
     
     public static event Action<float> DamagePlayer;
+    public static event Action<float> HealthChanged;
     private void Awake()
     {
         _player = GetComponent<Player>();
@@ -22,13 +24,13 @@ public class PlayerHealth : HealthManager
     //Adding events
     private void OnEnable()
     {
-        CrossSplineDmg.DealDamageOnDeath += HandlePlayerTakeDamage;
+        PathTriggers.DealDmgOnCross += HandlePlayerTakeDamage;
     }
 
     //Removing events
     private void OnDisable()
     {
-        CrossSplineDmg.DealDamageOnDeath -= HandlePlayerTakeDamage;
+        PathTriggers.DealDmgOnCross -= HandlePlayerTakeDamage;
     }
 
     private void Update()
@@ -38,11 +40,11 @@ public class PlayerHealth : HealthManager
             //Kill player
         }
         
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            HandlePlayerTakeDamage(20);
-            DamagePlayer.Invoke(20);
-        }
+        // if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount == 3)
+        // {
+        //     HandlePlayerTakeDamage(20);
+        //     DamagePlayer.Invoke(20);
+        // }
     }
     
 
@@ -55,5 +57,6 @@ public class PlayerHealth : HealthManager
     {
         SubtractHealth(damage);
         _camAnim.Play(_camAnim.clip.name);
+        HealthChanged.Invoke(this.GetCurrentHealth());
     }
 }
