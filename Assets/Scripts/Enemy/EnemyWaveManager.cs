@@ -15,7 +15,8 @@ public class EnemyWaveManager : MonoBehaviour
     [SerializeField] private int _currWaveIndex = 0;
     [SerializeField] private int _enemiesDefeated = 0;
 
-    public static event Action<int> WavesCompleted; 
+    public static event Action<int> WaveCompleted;
+    public static event Action<int> AllWavesCompleted;
     
     private void OnEnable()
     {
@@ -95,19 +96,34 @@ public class EnemyWaveManager : MonoBehaviour
         
         if (_currWaveIndex >= _waves.Length - 1)
         {
-            WavesCompleted?.Invoke(_currWaveIndex);
+            Debug.Log("WAVE COMPLETED");
+            _currWaveIndex++;
+            WaveCompleted?.Invoke(_currWaveIndex);
+            AllWavesCompleted?.Invoke(_currWaveIndex + 1);
             return;
         }
         
         _currWaveIndex++;
         _enemiesDefeated = 0;
+        WaveCompleted?.Invoke(_currWaveIndex);
     }
 
     public int GetTotalEnemiesInWave()
     {
-        var wave = _waves[_currWaveIndex];
+        int totalEnemies = 0;
+        if (_waves.Length > _currWaveIndex)
+        {
+            var wave = _waves[_currWaveIndex];
+            totalEnemies = wave.enemies.Length;
+        }
+        else
+        {
+            var wave = _waves.LastOrDefault();
+            if (!wave) return 0;
+            totalEnemies = wave.enemies.Length;
+        }
 
-        return wave.enemies.Length;
+        return totalEnemies;
     }
 
     public int GetTotalWaves()

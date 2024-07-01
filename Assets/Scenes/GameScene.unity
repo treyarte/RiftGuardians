@@ -6338,7 +6338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waves:
   - {fileID: 11400000, guid: 2bd8405e9db1bdd4fb5697b47af057fb, type: 2}
-  - {fileID: 11400000, guid: 2bd8405e9db1bdd4fb5697b47af057fb, type: 2}
+  - {fileID: 11400000, guid: 673e036f912277f44bb3598342330f26, type: 2}
   - {fileID: 11400000, guid: 2bd8405e9db1bdd4fb5697b47af057fb, type: 2}
   _mainSpline: {fileID: 1933931712}
   _canSpawnEnemy: 1
@@ -8196,7 +8196,7 @@ PrefabInstance:
     - target: {fileID: 4805059499682776911, guid: 7d7e3608b777af54a8f22df2ceea4580,
         type: 3}
       propertyPath: _damageAmount
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5961247529249061280, guid: 7d7e3608b777af54a8f22df2ceea4580,
         type: 3}

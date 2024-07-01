@@ -10,38 +10,47 @@ public class LevelInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _enemiesInfoText;
     [SerializeField] private EnemyWaveManager _enemyWaveManager;
     private int waves = 0;
-    private int enemies = 0;
-    private int enemiesDefeated = 0;
+    private int enemyCount = 0;
+    private int totalEnemiesDefeated = 0;
+    private int enemiesDefeatedInWave = 0;
     private void OnEnable()
     {
         SnakeEnemy.DestroySnake += onEnemyDestroy;
+        EnemyWaveManager.WaveCompleted += onWaveCompleted;
     }
 
     private void OnDisable()
     {
         SnakeEnemy.DestroySnake -= onEnemyDestroy;
+        EnemyWaveManager.WaveCompleted -= onWaveCompleted;
     }
 
     private void Start()
     {
        waves = _enemyWaveManager._waves.Length;
-       enemies = _enemyWaveManager.GetTotalEnemiesInWave();
+       enemyCount = _enemyWaveManager.GetTotalEnemiesInWave();
        
        SetWaveText($"0/{waves}");
-       SetEnemyText($"0/{enemies}");
+       SetEnemyText($"0/{enemyCount}");
     }
 
     private void onEnemyDestroy()
     {
-        enemiesDefeated++;
-        enemies = _enemyWaveManager.GetTotalEnemiesInWave();
+        enemiesDefeatedInWave++;
+        enemyCount = _enemyWaveManager.GetTotalEnemiesInWave();
+        SetEnemyText($"{enemiesDefeatedInWave}/{enemyCount}");
+    }
 
-        if (enemiesDefeated > enemies)
-        {
-            enemiesDefeated = 0;
-        }
-        
-        SetEnemyText($"{enemiesDefeated}/{enemies}");
+    /// <summary>
+    /// Update the wave text and reset the enemies counter
+    /// </summary>
+    private void onWaveCompleted(int waveNum)
+    {
+        SetWaveText($"{waveNum}/{waves}");
+        enemyCount = _enemyWaveManager.GetTotalEnemiesInWave();
+        totalEnemiesDefeated = enemiesDefeatedInWave;
+        enemiesDefeatedInWave = 0;
+        SetEnemyText($"0/{enemyCount}");
     }
 
     private void SetWaveText(string text)
