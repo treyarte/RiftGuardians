@@ -94,7 +94,6 @@ public class SnakeEnemy : MonoBehaviour
                 splinePositioner.followTargetDistance = _offset;
             }
             
-            
             var prevSnakePart = prevPart.gameObject.GetComponent<SnakePart>();
             prevSnakePart.backObjId = newSnakePart.gameObject.GetInstanceID();
             newSnakePart.frontObjId = prevPart.gameObject.GetInstanceID();
@@ -243,25 +242,6 @@ public class SnakeEnemy : MonoBehaviour
             newTail.Data.GetComponent<SnakePart>().SetIsTail(true);
             return;
         }
-        
-        // if (snakePart.GetIsTail())
-        // {
-        //     //If the we only have the tail and head left destroy the entire snake
-        //     if (snakeNode.Previous.Data.GetInstanceID() == _snakePartsOrderedList.Head().Data.GetInstanceID())
-        //     {
-        //         Destroy(this.gameObject);
-        //     }
-        //
-        //     snakeNode.Previous.Data.GetComponent<SnakePart>().SetIsTail(true);
-        //     _snakePartsOrderedList.RemoveLast();
-        //     return;
-        // }
-        //
-        // if (snakeNode.Next == null && snakeNode.Previous.Data == _snakePartsOrderedList.Head().Data)
-        // {
-        //         Destroy(this.gameObject);
-        //         return;
-        // }
         
         SwapSnakeNodes(snakeNode);
     }
