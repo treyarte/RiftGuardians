@@ -7468,7 +7468,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 275.21698, y: -226.87584}
+  m_AnchoredPosition: {x: 878.07367, y: -126.44403}
   m_SizeDelta: {x: 165, y: 199}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1563102294
@@ -7737,7 +7737,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540.217, y: -226.87584}
+  m_AnchoredPosition: {x: 1143.0737, y: -126.44403}
   m_SizeDelta: {x: 165, y: 199}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1575399524
@@ -7992,7 +7992,7 @@ PrefabInstance:
     - target: {fileID: 4805059499682776911, guid: 7d7e3608b777af54a8f22df2ceea4580,
         type: 3}
       propertyPath: _damageAmount
-      value: 50
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5961247529249061280, guid: 7d7e3608b777af54a8f22df2ceea4580,
         type: 3}
@@ -10959,6 +10959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23bb06d41305856408d1c172288239be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levelResultsScreen: {fileID: 2052293317}
 --- !u!1 &2067109847
 GameObject:
   m_ObjectHideFlags: 0
