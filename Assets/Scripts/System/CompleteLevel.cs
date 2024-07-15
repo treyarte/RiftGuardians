@@ -7,8 +7,6 @@ using UnityEngine;
 public class CompleteLevel : MonoBehaviour
 {
     [SerializeField]
-    private EnemySpawner spawnManager;
-    [SerializeField]
     private GameObject _levelResMenu;
 
     public int wavesCompleted;
@@ -18,23 +16,6 @@ public class CompleteLevel : MonoBehaviour
     public int remainingEnemies;
 
     public static Action WaveCompleted;
-
-    private void OnEnable()
-    {
-        
-    }
-
-    private void OnDisable()
-    {
-        
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-        
-    }
 
     // Update is called once per frame
     void Update()

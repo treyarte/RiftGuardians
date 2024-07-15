@@ -52,7 +52,7 @@ MonoBehaviour:
   - {fileID: 5761523335045751975, guid: 905ca484eead27a4eb731f0f96f2d5b6, type: 3}
   _snakeTail: {fileID: 8122722886030272909, guid: 5e979293c6cfeb846818bde0c831ba8b,
     type: 3}
-  _maxLength: 20
+  _maxLength: 10
   distanceBetween: 0.4
 --- !u!114 &6650631751202347861
 MonoBehaviour:
